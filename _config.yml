@@ -8,7 +8,9 @@ subtitle:
 description:
 keywords:
 author: Dazzy Ding
-language: zh
+language:
+  - zh
+  - en
 timezone: Asia/Hong_Kong
 
 # URL
