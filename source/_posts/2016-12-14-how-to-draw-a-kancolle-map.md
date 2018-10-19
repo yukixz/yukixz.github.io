@@ -1,9 +1,7 @@
 ---
-layout: post
-title: "How to Draw a KanColle Map"
-date: 2016-12-14 19:23:34 +0800
-comments: true
+title: How to Draw a KanColle Map
 categories: kancolle
+alias: /blog/2016/12/14/how-to-draw-a-kancolle-map/
 ---
 
 This is a post about how [kcmap](https://github.com/yukixz/kcmap) draw a SVG using map SWF only.

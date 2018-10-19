@@ -1,8 +1,5 @@
 ---
-layout: post
-title: "ocserv + Let's Encrypt + 证书认证"
-date: 2016-02-15 14:42:29 +0800
-comments: true
+title: ocserv + Let's Encrypt + 证书认证
 categories: 
 alias: /blog/2016/02/15/ocserv-letsencrypt-certificate/
 ---

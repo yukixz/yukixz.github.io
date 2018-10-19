@@ -1,8 +1,5 @@
 ---
-layout: post
-title: "「艦隊これくしょん」混淆与反混淆"
-date: 2016-03-17 01:18:52 +0800
-comments: true
+title: 「艦隊これくしょん」混淆与反混淆
 categories: 
 alias: /blog/2016/03/17/kantai-collection-obfuscation-anti-obfuscation/
 ---
