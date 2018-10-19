@@ -81,3 +81,14 @@ deploy:
   type: git
   repo: git@github.com:yukixz/yukixz.github.io.git
   branch: master
+
+# Extensions: feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
