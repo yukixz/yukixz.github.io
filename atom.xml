@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Dazzy Ding</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://dazzyd.org/"/>
+  <updated>2018-10-19T09:24:44.095Z</updated>
+  <id>https://dazzyd.org/</id>
+  
+  <author>
+    <name>Dazzy Ding</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Draw a KanColle Map</title>
+    <link href="https://dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/"/>
+    <id>https://dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/</id>
+    <published>2016-12-14T11:23:34.000Z</published>
+    <updated>2018-10-19T09:24:44.095Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;This is a post about how &lt;a href=&quot;https://github.com/yukixz/kcmap&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;kcmap&lt;/a&gt; draw a SVG using map SWF
+        
+      
+    
+    </summary>
+    
+      <category term="kancolle" scheme="https://dazzyd.org/categories/kancolle/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>「艦隊これくしょん」混淆与反混淆</title>
+    <link href="https://dazzyd.org/2016/03/17/kancolle-obfuscation/"/>
+    <id>https://dazzyd.org/2016/03/17/kancolle-obfuscation/</id>
+    <published>2016-03-16T17:18:52.000Z</published>
+    <updated>2018-10-19T09:14:32.329Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;「艦隊これくしょん」出于反 Bot 和未知目的，对游戏资源进行了不少混淆处理。&lt;/p&gt;
+&lt;p&gt;本文列举将会列举部分资源的混淆算法，并给出整理后的混淆算法或反混淆算法。&lt;/p&gt;
+&lt;p&gt;注意：此些算法都具有时效性，建议在使用前进行测试。&lt;/p&gt;
+&lt;h2 id=&quot;体例&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ocserv + Let&#39;s Encrypt + 证书认证</title>
+    <link href="https://dazzyd.org/2016/02/15/ocserv-letsencrypt-certificate/"/>
+    <id>https://dazzyd.org/2016/02/15/ocserv-letsencrypt-certificate/</id>
+    <published>2016-02-15T06:42:29.000Z</published>
+    <updated>2018-10-19T09:14:34.038Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文需要基础 Linux 知识与网络知识。&lt;br&gt;请自行替换文内的所有全大写字段。  &lt;/p&gt;
+&lt;h2 id=&quot;简要原理&quot;&gt;&lt;a href=&quot;#简要原理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
