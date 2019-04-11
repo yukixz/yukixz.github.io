@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a post about how kcmap draw a SVG using map SWF only.
+
+Basic KnowledgeIn order to understand this post, you may need these knowledge.
+Display ">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Dazzy Ding">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="How to Draw a KanColle Map">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Dazzy Ding">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>How to Draw a KanColle Map - Dazzy Ding</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77259235-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Dazzy Ding">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Dazzy Ding">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="https://dazzyd.org/" title="About">
+                    About
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">How to Draw a KanColle Map</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2016-12-14</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <p>This is a post about how <a href="https://github.com/yukixz/kcmap" target="_blank" rel="noopener">kcmap</a> draw a SVG using map SWF only.</p>
+<img src="/how-to-draw-a-kancolle-map/kcmap_23_final.svg" title="kcmap 2-3 final">
+<h2 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h2><p>In order to understand this post, you may need these knowledge.</p>
+<h3 id="Display-Container-of-Flash-AS3"><a href="#Display-Container-of-Flash-AS3" class="headerlink" title="Display Container of Flash (AS3)"></a>Display Container of Flash (AS3)</h3><p>Flash (AS3) renders its display from a <code>DisplayObjectContainer</code> tree.<br>A container is isolated system, having self-governed coordinate system, child containers and so on.</p>
+<p>These are common container: <code>MovieClip</code>, <code>Sprite</code>, <code>Shape</code>, etc.</p>
+<h3 id="Coordinate-System-of-Flash"><a href="#Coordinate-System-of-Flash" class="headerlink" title="Coordinate System of Flash"></a>Coordinate System of Flash</h3><p>Coordinate of flash allow interger only, while one point equals to 0.05 pixel.<br>It means <code>(8000, 6000)</code> is <code>(400, 300)</code> on screen.</p>
+<h3 id="Decompilation-of-SWF"><a href="#Decompilation-of-SWF" class="headerlink" title="Decompilation of SWF"></a>Decompilation of SWF</h3><p>Usage of <a href="https://www.free-decompiler.com/" target="_blank" rel="noopener">JPEXS Free Flash Decompiler (ffdec)</a>.</p>
+<h2 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h2><h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><p>According to the decompilation of map swf, a Sprite named <code>map</code> contains entire data inside the swf.</p>
+<p>When game client calls <code>/api_req_map/start</code> or <code>/api_req_map/next</code>, the <code>api_no</code> value in response is used to indicates the route.<br>For example, <code>api_no: 11</code> indicates child Sprite <code>line11</code> of Sprite <code>map</code>.<br>If Sprite <code>line11</code> isn’t a start spot, it will contain a Shape which contain the route Bitmap.</p>
+<p>The container structure is as follows.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sprite@name=map</span><br><span class="line">├─┬ child[@name=line11][@id=32] =&gt; Sprite@id=32</span><br><span class="line">│ └─┬ child@id=31 =&gt; Shape@id=31</span><br><span class="line">│   └─┬ shapeBounds</span><br><span class="line">│     └ child@id=30 =&gt; Bitmap@id=30</span><br><span class="line">├─┬ child[@name=line12][@id=34] =&gt; ...</span><br><span class="line">│ └── ...</span><br><span class="line">└ ...</span><br></pre></td></tr></table></figure></p>
+<h3 id="Coordinate"><a href="#Coordinate" class="headerlink" title="Coordinate"></a>Coordinate</h3><p>As said, each container has its owned coordinate system.<br>The real coordinate of current container is got by summing up <code>x</code> and <code>y</code> from root to current container.</p>
+<p>It’s easy.<br>Let’s mark line 11 of map 2-3 for an intuitive feeling.</p>
+<ul>
+<li>The GREEN cross is the origin of Sprite <code>line11</code> in its parent Sprite <code>map</code>.</li>
+<li>The CYAN cross is the origin of Shape (line11) in its parent Sprite <code>line11</code>.</li>
+<li>The RED rectangle is bounds of Shape (line11) which consists of Bitmap (line11).</li>
+</ul>
+<img src="/how-to-draw-a-kancolle-map/kcmap_mc_23_11.png" title="Map 2-3 line 11">
+<h2 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h2><img src="/how-to-draw-a-kancolle-map/kcmap_mc_23.png" title="Map 2-3">
+<p>Take a look at all container marked map 2-3.</p>
+<p>It shows routes’ end position, routes’ image position, routes’ image size, …<br>Wait, where do routes start?<br>In fact, start position of routes don’t appear inside SWF.<br>Guessing is required to find out routes’ start position.</p>
+<h3 id="Guess"><a href="#Guess" class="headerlink" title="Guess"></a>Guess</h3><p>Here’s my method to guess start coordinate, using line 11 of map 2-3 as exmaple again.</p>
+<ol>
+<li>Take all routes’ end coordinate as map spots.</li>
+<li>Calculate the coordinate of route image center(named C).</li>
+<li>Draw a line from <code>line11</code> end spot (named E) to C stopped at S with twice length of EC.</li>
+<li>The spot nearest S is start spot.</li>
+</ol>
+<img src="/how-to-draw-a-kancolle-map/kcmap_23_11_guess_1.png" title="Map 2-3 line 11 guess 1">
+<img src="/how-to-draw-a-kancolle-map/kcmap_23_11_guess_2.png" title="Map 2-3 line 11 guess 2">
+<img src="/how-to-draw-a-kancolle-map/kcmap_23_11_guess_3.png" title="Map 2-3 line 11 guess 3">
+<img src="/how-to-draw-a-kancolle-map/kcmap_23_11_guess_4.png" title="Map 2-3 line 11 guess 4">
+<p>Then, we can draw the map image.</p>
+<img src="/how-to-draw-a-kancolle-map/kcmap_23.svg" title="kcmap 2-3">
+<h2 id="Spot-Name"><a href="#Spot-Name" class="headerlink" title="Spot Name"></a>Spot Name</h2><h3 id="Old-Map"><a href="#Old-Map" class="headerlink" title="Old Map"></a>Old Map</h3><p>Spot is named as ABC letter by KanColle community to facilitate communication.<br>They’re not offical map information, so aren’t included in SWF.<br>Manual operation is required for assigning spot name.</p>
+<h3 id="New-Map"><a href="#New-Map" class="headerlink" title="New Map"></a>New Map</h3><p>Since a time I don’t know, KanColle production team begin to name spot as community did.<br>However, they embed the letters into the background, making it impossible to extract letters from SWF.<br>So, manual operation is also required.</p>
+<h2 id="Draw"><a href="#Draw" class="headerlink" title="Draw"></a>Draw</h2><p>After the steps above, information for drawing a map is complete.</p>
+<p>Let’s take a look at the title image again.</p>
+<img src="/how-to-draw-a-kancolle-map/kcmap_23_final.svg" title="kcmap 2-3 final">
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/img/avatar.png" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Dazzy Ding">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/kancolle/">kancolle</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/setup-wireguard/">安装 WireGuard 访问家里设备</a>
+        </p>
+    
+        <p>
+            <a href="/how-to-draw-a-kancolle-map/">How to Draw a KanColle Map</a>
+        </p>
+    
+        <p>
+            <a href="/kancolle-obfuscation/">「艦隊これくしょん」混淆与反混淆</a>
+        </p>
+    
+        <p>
+            <a href="/ocserv-letsencrypt-certificate/">ocserv + Let&#39;s Encrypt + 证书认证</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/yukixz" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://t.me/yukixz" target="_blank">
+                            <i class="fa fa-telegram"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/yukixz" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://steamcommunity.com/id/yukixz/" target="_blank">
+                            <i class="fa fa-steam"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/atom.xml" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2019 Dazzy Ding.
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Mermaid Diagrams -->
+
+<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+<script>
+    (function(){
+    if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+    }
+    }());
+</script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

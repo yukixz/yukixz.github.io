@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="「艦隊これくしょん」出于反 Bot 和未知目的，对游戏资源进行了不少混淆处理。
+本文列举将会列举部分资源的混淆算法，并给出整理后的混淆算法或反混淆算法。
+注意：此些算法都具有时效性，建议在使用前进行测试。
+体例
+Core.swf/common.util.SoundUtil/createFileNam">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Dazzy Ding">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="「艦隊これくしょん」混淆与反混淆">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Dazzy Ding">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>「艦隊これくしょん」混淆与反混淆 - Dazzy Ding</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77259235-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Dazzy Ding">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Dazzy Ding">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="https://dazzyd.org/" title="About">
+                    About
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">「艦隊これくしょん」混淆与反混淆</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2016-03-17</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <p>「艦隊これくしょん」出于反 Bot 和未知目的，对游戏资源进行了不少混淆处理。</p>
+<p>本文列举将会列举部分资源的混淆算法，并给出整理后的混淆算法或反混淆算法。</p>
+<p>注意：此些算法都具有时效性，建议在使用前进行测试。</p>
+<h2 id="体例"><a href="#体例" class="headerlink" title="体例"></a>体例</h2><ul>
+<li><code>Core.swf/common.util.SoundUtil/createFileName</code>：表示 <code>Core.swf</code> 文件中的 <code>common.util.SoundUtil</code> 类中的 <code>createFileName</code> 函数。</li>
+</ul>
+<h2 id="Core-swf"><a href="#Core-swf" class="headerlink" title="Core.swf "></a>Core.swf <a id="core-swf"></a></h2><p><em>Last Update: 2017-02-15</em></p>
+<p>Core.swf 是游戏加载的第二个 swf 文件，由 mainD2.swf 读取、反混淆和加载运行。其反混淆函数为 <code>mainD2.swf/mainD2/___</code>，该函数本身亦经过复杂的代码混淆。</p>
+<p>反混淆算法原理：</p>
+<ol>
+<li>将 Core.swf 的 0~127 bytes 划为第一区域，128~EOF 划为第二区域。</li>
+<li>将第二区域按相等大小划分为 8 块，按 0, 7, 2, 5, 4, 3, 6, 1 的顺序重新排列。</li>
+</ol>
+<p>反混淆脚本 <code>Core-decode.py Core.swf Core-dec.swf</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">ORDER = [<span class="number">0</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line">SRC = sys.argv[<span class="number">1</span>]</span><br><span class="line">DEST = sys.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(SRC, <span class="string">"rb"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    org = f.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(DEST, <span class="string">"wb"</span>) <span class="keyword">as</span> dec:</span><br><span class="line">    size = (len(org) - <span class="number">128</span>) &gt;&gt; <span class="number">3</span></span><br><span class="line">    dec.write(org[<span class="number">0</span>:<span class="number">128</span>])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ORDER:</span><br><span class="line">        dec.write(org[ i*size+<span class="number">128</span> : (i+<span class="number">1</span>)*size+<span class="number">128</span> ])</span><br></pre></td></tr></table></figure>
+<h2 id="活动地图的-SP-部分"><a href="#活动地图的-SP-部分" class="headerlink" title="活动地图的 SP 部分 "></a>活动地图的 SP 部分 <a id="event-sp"></a></h2><p><em>Last Update: 2017-02-15</em></p>
+<p>角川于 2016 年秋活（2016-11）新增了达成一定条件后解锁新增海域路径的机制。</p>
+<p>该机制原理为：</p>
+<ol>
+<li>将新增的海域路径储存到额外的 SWF 文件中。</li>
+<li>将该额外 SWF 文件使用 <a href="#core-swf">Core.swf</a> 相同的算法混淆处理。</li>
+<li>将混淆后的 SWF 文件作为二进制数据（Binary Data）嵌入到 <code>/kcs/scenes/SallyMain.swf</code> 中。</li>
+</ol>
+<p>因此，只需要将 <code>SallyMain.swf</code> 嵌入的二进制文件保存为 SWF 文件，然后使用上述 <code>Core-decode.py</code> 即可反混淆。</p>
+<h2 id="活动地图的文件名-swf"><a href="#活动地图的文件名-swf" class="headerlink" title="活动地图的文件名 (swf) "></a>活动地图的文件名 (swf) <a id="event-map"></a></h2><p><em>Last Update: 2017-02-15</em></p>
+<p>自 2016 年冬活（2016-02-10）起，角川对活动地图的 swf 文件名进行了混淆，但通常图的文件名仍然遵循 <code>AA_BB.swf</code> 的格式。其混淆函数位于 <code>Core.swf/common.resources.MapResourceLoader/_convertName</code>。</p>
+<p>该函数内 <code>__loc10__:String</code> 的值为一串正则表达式的结果，其值为 <code>&quot;push&quot;</code>，这是该函数内唯一的代码混淆。</p>
+<p>该混淆函数的本质是对 <code>RND:Array</code> 的解压缩算法，建议直接阅读下面的算法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Map ID</span></span><br><span class="line"><span class="keyword">const</span> mapArea = <span class="number">33</span></span><br><span class="line"><span class="keyword">const</span> mapNo = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// RND is extract from Core.swf/common.resources.MapResourceLoader/RND</span></span><br><span class="line"><span class="keyword">const</span> RND = [<span class="number">3367</span>, <span class="number">28012</span>, <span class="number">6269</span>, <span class="number">26478</span>, <span class="number">24442</span>, <span class="number">27255</span>, <span class="number">28017</span>, <span class="number">3366</span>, </span><br><span class="line">             <span class="number">6779</span>, <span class="number">7677</span>, <span class="number">7179</span>, <span class="number">28011</span>, <span class="number">24421</span>, <span class="number">27502</span>, <span class="number">3366</span>, <span class="number">7779</span>, </span><br><span class="line">             <span class="number">24439</span>, <span class="number">27762</span>, <span class="number">6474</span>, <span class="number">7463</span>, <span class="number">28515</span>, <span class="number">3364</span>, <span class="number">6672</span>, <span class="number">28006</span>, </span><br><span class="line">             <span class="number">27999</span>, <span class="number">27254</span>, <span class="number">7363</span>, <span class="number">6868</span>] </span><br><span class="line"></span><br><span class="line"><span class="comment">// Procedure 1: Decode</span></span><br><span class="line"><span class="keyword">let</span> RND1 = []</span><br><span class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> rnd <span class="keyword">of</span> RND) &#123;</span><br><span class="line">    rndstr = rnd &gt; <span class="number">10000</span> ? rnd.toString(<span class="number">16</span>) : rnd.toString()</span><br><span class="line">    RND1.push(rndstr.substr(<span class="number">0</span>, <span class="number">2</span>))</span><br><span class="line">    RND1.push(rndstr.substr(<span class="number">2</span>, <span class="number">4</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"RND1"</span>, <span class="built_in">JSON</span>.stringify(RND1))</span><br><span class="line"></span><br><span class="line"><span class="comment">// Procedure 2: Group</span></span><br><span class="line"><span class="comment">// Format: 33 a b c d 32 j k l</span></span><br><span class="line"><span class="keyword">let</span> kfile = []</span><br><span class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> area = <span class="number">0</span>, file = <span class="string">''</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> rnd <span class="keyword">of</span> RND1) &#123;</span><br><span class="line">    rnd = <span class="built_in">parseInt</span>(rnd, <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">if</span> (rnd &lt; <span class="number">90</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (file !== <span class="string">''</span>) &#123;</span><br><span class="line">        area = <span class="built_in">parseInt</span>(area.toString(<span class="number">16</span>))</span><br><span class="line">        kfile.push([area, file])</span><br><span class="line">        file = <span class="string">''</span></span><br><span class="line">      &#125;</span><br><span class="line">      area = rnd</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      file += <span class="built_in">String</span>.fromCharCode(rnd)  <span class="comment">// 91=a, 92=b, ...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  kfile.push([area, file])  <span class="comment">// Seems last item needn't to convert</span></span><br><span class="line">&#125;)()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"kfile"</span>, <span class="built_in">JSON</span>.stringify(kfile))</span><br><span class="line"></span><br><span class="line"><span class="comment">// Procedure 3: Find</span></span><br><span class="line"><span class="comment">// Find No.`mapNo` of `kfile[i][0] == areaID`, and its file name is `kfile[i][1]`</span></span><br><span class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> _ <span class="keyword">of</span> kfile) &#123;</span><br><span class="line">    <span class="keyword">let</span> area = _[<span class="number">0</span>], file = _[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> (area === mapArea) &#123;</span><br><span class="line">      i += <span class="number">1</span></span><br><span class="line">      <span class="keyword">if</span> (i === mapNo)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;mapArea&#125;</span>-<span class="subst">$&#123;mapNo&#125;</span>: <span class="subst">$&#123;file&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<h2 id="舰船语音的文件名-mp3"><a href="#舰船语音的文件名-mp3" class="headerlink" title="舰船语音的文件名 (mp3) "></a>舰船语音的文件名 (mp3) <a id="ship-voice"></a></h2><p><em>Last Update: 2016-03-17</em></p>
+<p>角川于 2016 冬活结束的维护（2016-02-24）中，对所有舰船语音的文件名进行了混淆，但仍保留旧的文件（<code>1~51.mp3</code>）。于 2016-02-29 的维护中，更改了混淆算法的 key 并删除了旧的文件，但没有修改混淆算法。</p>
+<p>该混淆算法位于 <code>Core.swf/common.util.SoundUtil/createFileName</code>。该算法极为简单，且算法本身未有任何混淆。</p>
+<p>整理后的混淆算法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># vcKey is extracted from Core.swf/common.util.SoundUtil</span><br><span class="line"><span class="keyword">const</span> vcKey = [<span class="number">604825</span>,<span class="number">607300</span>,<span class="number">613847</span>,<span class="number">615318</span>,<span class="number">624009</span>,<span class="number">631856</span>,<span class="number">635451</span>,<span class="number">637218</span>, </span><br><span class="line">               <span class="number">640529</span>,<span class="number">643036</span>,<span class="number">652687</span>,<span class="number">658008</span>,<span class="number">662481</span>,<span class="number">669598</span>,<span class="number">675545</span>,<span class="number">685034</span>, </span><br><span class="line">               <span class="number">687703</span>,<span class="number">696444</span>,<span class="number">702593</span>,<span class="number">703894</span>,<span class="number">711191</span>,<span class="number">714166</span>,<span class="number">720579</span>,<span class="number">728970</span>, </span><br><span class="line">               <span class="number">738675</span>,<span class="number">740918</span>,<span class="number">743009</span>,<span class="number">747240</span>,<span class="number">750347</span>,<span class="number">759846</span>,<span class="number">764051</span>,<span class="number">770064</span>, </span><br><span class="line">               <span class="number">773457</span>,<span class="number">779858</span>,<span class="number">786843</span>,<span class="number">790526</span>,<span class="number">799973</span>,<span class="number">803260</span>,<span class="number">808441</span>,<span class="number">816028</span>, </span><br><span class="line">               <span class="number">825381</span>,<span class="number">827516</span>,<span class="number">832463</span>,<span class="number">837868</span>,<span class="number">843091</span>,<span class="number">852548</span>,<span class="number">858315</span>,<span class="number">867580</span>, </span><br><span class="line">               <span class="number">875771</span>,<span class="number">879698</span>,<span class="number">882759</span>,<span class="number">885564</span>,<span class="number">888837</span>,<span class="number">896168</span>] </span><br><span class="line"># shipId: api_start2 . api_mst_ships [] . api_id</span><br><span class="line"># voiceId: 1 ~ 51</span><br><span class="line">convertFilename = <span class="function">(<span class="params">shipId, voiceId</span>) =&gt;</span></span><br><span class="line">  (shipId + <span class="number">7</span>) * <span class="number">17</span> * (vcKey[voiceId] - vcKey[voiceId - <span class="number">1</span>]) % <span class="number">99173</span> + <span class="number">100000</span></span><br></pre></td></tr></table></figure>
+<h2 id="战果排名的战果值混淆"><a href="#战果排名的战果值混淆" class="headerlink" title="战果排名的战果值混淆 "></a>战果排名的战果值混淆 <a id="rank"></a></h2><p><em>Last Update: 2016-08-01</em></p>
+<p>角川于 2016-7-15 的维护更新中，对战果排名中的玩家战果值（<code>api_rate</code>）进行了混淆。此次混淆对不同玩家采用了不同的混淆值，且算法本身亦经过一定规模的混淆。角川与 2016-8-1 的维护更新中，对战果 API URL 和其字段进行了混淆，同时小幅更新了战果值的混淆算法。</p>
+<p>本文不涉及战果 API URL 和其字段的混淆分析，请参考<a href="https://github.com/andanteyk/ElectronicObserver/blob/master/ElectronicObserver/Other/Information/apilist.txt#L1067" target="_blank" rel="noopener">其他信息</a>。</p>
+<p>此混淆算法涉及到四个文件：核心部分为 <code>Core.swf/core.apis._APIBaseS_</code> 和 <code>RecoreMain.swf/scene.record.models.RankData/RankData</code>，次要部分为 <code>RecordMain.swf/scene.record.models.RankingData/setData</code> 和 <code>RecordMain.swf/connection.api_req_ranking.RankingListAPI/_handleLoadComplete</code>。</p>
+<p>因为角川几乎在每次游戏维护都会修改混淆算法的 key，因此以下算法仅供了解原理，请前往 <a href="https://github.com/ruiii/plugin-Hairstrength/blob/master/components/utils.es#L50" target="_blank" rel="noopener">poi 我变强了</a> 查看最新的混淆 key。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line"><span class="comment"># `Il` is extracted from 'core.apis._APIBaseS_/Il'</span></span><br><span class="line">Il = [<span class="number">4999</span>, <span class="number">2257</span>, <span class="number">7351</span>, <span class="number">2039</span>, <span class="number">6604</span>, <span class="number">4132653</span>, <span class="number">1033183</span>, <span class="number">2570</span>, <span class="number">4979</span>, <span class="number">6314</span>, <span class="number">13</span>,</span><br><span class="line">      <span class="number">5478</span>, <span class="number">3791</span>, <span class="number">10</span>, <span class="number">9640</span>, <span class="number">6707</span>, <span class="number">1000</span>, <span class="number">1875979</span>]</span><br><span class="line"><span class="comment"># Maigc number is calculated from 'core.apis._APIBaseS_/I1'</span></span><br><span class="line">MAGIC_13 = str(sqrt(<span class="number">13</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> sys.version_info &lt; (<span class="number">3</span>, <span class="number">0</span>):</span><br><span class="line">    <span class="comment"># Python 2.x hard code</span></span><br><span class="line">    MAGIC_13 = <span class="string">'%.15f'</span> % sqrt(<span class="number">13</span>)</span><br><span class="line"></span><br><span class="line">MAGIC = [<span class="number">-1</span>] * <span class="number">10</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> MAGIC_13[n] != str(i):</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line">    MAGIC[i] = Il[n]</span><br><span class="line"></span><br><span class="line"><span class="comment"># `_l_` is refactored from 'core.apis._APIBaseS_/_l_'</span></span><br><span class="line"><span class="comment"># Get the first two digits of the magic number</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_l_</span><span class="params">(id)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> int(str(MAGIC[id % <span class="number">10</span>])[<span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Magic R is extracted from 'scene.record.models.RankData/RankData'</span></span><br><span class="line">MAGIC_R = [<span class="number">8831</span>, <span class="number">1201</span>, <span class="number">1175</span>, <span class="number">555</span>, <span class="number">4569</span>, <span class="number">4732</span>, <span class="number">3779</span>, <span class="number">4568</span>,</span><br><span class="line">           <span class="number">5695</span>, <span class="number">4619</span>, <span class="number">4912</span>, <span class="number">5669</span>, <span class="number">6569</span>]</span><br><span class="line"><span class="comment"># `real_rate` is refactored from 'scene.record.models.RankData/RankData'</span></span><br><span class="line"><span class="comment"># We assume that it always is even divisible.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">real_rate</span><span class="params">(login_member_id, rank_no, rank_rate)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> rank_rate / MAGIC_R[rank_no % <span class="number">13</span>] / _l_(login_member_id) - <span class="number">73</span> - <span class="number">18</span></span><br></pre></td></tr></table></figure>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/img/avatar.png" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Dazzy Ding">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/setup-wireguard/">安装 WireGuard 访问家里设备</a>
+        </p>
+    
+        <p>
+            <a href="/how-to-draw-a-kancolle-map/">How to Draw a KanColle Map</a>
+        </p>
+    
+        <p>
+            <a href="/kancolle-obfuscation/">「艦隊これくしょん」混淆与反混淆</a>
+        </p>
+    
+        <p>
+            <a href="/ocserv-letsencrypt-certificate/">ocserv + Let&#39;s Encrypt + 证书认证</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/yukixz" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://t.me/yukixz" target="_blank">
+                            <i class="fa fa-telegram"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/yukixz" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://steamcommunity.com/id/yukixz/" target="_blank">
+                            <i class="fa fa-steam"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/atom.xml" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2019 Dazzy Ding.
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Mermaid Diagrams -->
+
+<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+<script>
+    (function(){
+    if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+    }
+    }());
+</script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

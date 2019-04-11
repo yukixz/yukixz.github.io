@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="本文需要基础 Linux 知识与网络知识。请自行替换文内的所有全大写字段。  
+简要原理以下包含口胡，欢迎指正。
+TLS/SSL 证书认证TLS/SSL 协议的允许连接双方都对端做身份认证。对服务器端认证一般采用证书认证的，对客户端认证一般采用用户名+密码的认证。由于每次都输入密码较为繁琐，因此对客">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Dazzy Ding">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="ocserv + Let&#39;s Encrypt + 证书认证">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Dazzy Ding">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>ocserv + Let&#39;s Encrypt + 证书认证 - Dazzy Ding</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77259235-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Dazzy Ding">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Dazzy Ding">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="https://dazzyd.org/" title="About">
+                    About
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">ocserv + Let's Encrypt + 证书认证</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2016-02-15</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <p>本文需要基础 Linux 知识与网络知识。<br>请自行替换文内的所有全大写字段。  </p>
+<h2 id="简要原理"><a href="#简要原理" class="headerlink" title="简要原理"></a>简要原理</h2><p>以下包含口胡，欢迎指正。</p>
+<h3 id="TLS-SSL-证书认证"><a href="#TLS-SSL-证书认证" class="headerlink" title="TLS/SSL 证书认证"></a>TLS/SSL 证书认证</h3><p>TLS/SSL 协议的允许连接双方都对端做身份认证。<br>对服务器端认证一般采用证书认证的，对客户端认证一般采用用户名+密码的认证。<br>由于每次都输入密码较为繁琐，因此对客户端亦采用证书认证的方式能更方便。  </p>
+<h3 id="Let’s-Encrypt-签发流程-WebRoot"><a href="#Let’s-Encrypt-签发流程-WebRoot" class="headerlink" title="Let’s Encrypt 签发流程 (WebRoot)"></a>Let’s Encrypt 签发流程 (WebRoot)</h3><ol>
+<li>客户端生成验证文件，存放到 <code>WEBROOT/.well-known/acme-challenge/</code></li>
+<li>客户端告知 Let’s Encrypt 服务器开始验证</li>
+<li>服务器读取 <code>http://DOMAIN/.well-known/acme-challenge/</code> 进行验证</li>
+<li>客户端向服务器查询验证是否成功</li>
+<li>若验证成功，向服务器获取证书</li>
+</ol>
+<p>其中 1、3 为可能出现问题的地方，若获取证书失败，建议优先检查此部分。<br>如：WEBROOT 不可被 letsencrypt 客户端写入；Let’s Encrypt 服务器无法解析 DOMAIN 的 DNS；DOMAIN 对应的 IP 非 Let’s Encrypt 客户端写入验证文件的主机等诸多问题。  </p>
+<h2 id="服务器证书"><a href="#服务器证书" class="headerlink" title="服务器证书"></a>服务器证书</h2><p>自建 CA 并签发服务器证书固然是可行方案，但需要在每台设备上都信任该自建 CA，较为麻烦且不安全。<br>因此我采用 Let’s Encrypt 来获取合法的服务器证书。  </p>
+<p><em>以下大部分命令需要 root 权限，但可以通过配置目录的读写权限绕过。</em><br><em>建议同时阅读 <a href="https://letsencrypt.readthedocs.org/en/latest/using.html" target="_blank" rel="noopener">Let’s Encrypt User Guide</a>。</em></p>
+<h3 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h3><ol>
+<li>将域名 DOMAIN 的 A/AAAA 记录指向当前主机。  </li>
+<li>配置 HTTP 服务器，使 <code>WEBROOT/.well-known/acme-challenge/</code> 可被访问。  </li>
+</ol>
+<h3 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h3><p>测试时建议加上 <code>--test-cert</code> 以免用完 Let’s Encrypt 的证书获取速率限制。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install certbot</span><br><span class="line">certbot certonly --webroot -w WEBROOT -d DOMAIN</span><br></pre></td></tr></table></figure></p>
+<h3 id="自动更新证书"><a href="#自动更新证书" class="headerlink" title="自动更新证书"></a>自动更新证书</h3><p>添加 cron 脚本至 <code>/etc/cron.monthly/certbot</code>，实现每月自动更新。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">WD=<span class="string">"/root/certbot"</span></span><br><span class="line">LOG=<span class="string">"<span class="variable">$&#123;WD&#125;</span>/cron.log"</span></span><br><span class="line"></span><br><span class="line">mkdir -p <span class="variable">$WD</span></span><br><span class="line">date &gt;&gt; <span class="variable">$LOG</span></span><br><span class="line">certbot renew &gt;&gt; <span class="variable">$LOG</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="用户证书"><a href="#用户证书" class="headerlink" title="用户证书"></a>用户证书</h2><p>用户证书只需 ocserv 信任 CA 即可，因此使用自建 CA 签发证书。<br>将以下脚本保存到 <code>/etc/ocserv/certs/</code>，然后运行 <code>./ocm generate USERNAME</code> 即可直接生成用户证书 <code>USERNAME.p12</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">    WORK=<span class="string">"./work"</span></span><br><span class="line">    CA_TMPL=<span class="string">"<span class="variable">$&#123;WORK&#125;</span>/ca.tmpl"</span></span><br><span class="line">    CA_KEY=<span class="string">"<span class="variable">$&#123;WORK&#125;</span>/ca-key.pem"</span></span><br><span class="line">    CA_CERT=<span class="string">"./ca.pem"</span></span><br><span class="line">    USER=<span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">    USER_TMPL=<span class="string">"<span class="variable">$&#123;WORK&#125;</span>/<span class="variable">$&#123;USER&#125;</span>.tmpl"</span></span><br><span class="line">    USER_KEY=<span class="string">"<span class="variable">$&#123;WORK&#125;</span>/<span class="variable">$&#123;USER&#125;</span>-key.pem"</span></span><br><span class="line">    USER_CERT=<span class="string">"<span class="variable">$&#123;WORK&#125;</span>/<span class="variable">$&#123;USER&#125;</span>.pem"</span></span><br><span class="line">    USER_P12=<span class="string">"./<span class="variable">$&#123;USER&#125;</span>.p12"</span></span><br><span class="line">    REVOKED_CERT=<span class="string">"<span class="variable">$&#123;WORK&#125;</span>/revoked.pem"</span></span><br><span class="line">    CRL_TMPL=<span class="string">"<span class="variable">$&#123;WORK&#125;</span>/crl.tmpl"</span></span><br><span class="line">    CRL_CERT=<span class="string">"./crl.pem"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Ensure working directory</span></span><br><span class="line">    [[ -d <span class="variable">$WORK</span> ]] || mkdir -p <span class="variable">$WORK</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># CA Template</span></span><br><span class="line">    [[ -f <span class="variable">$CA_TMPL</span> ]] || cat &lt;&lt; _EOF_ &gt; <span class="variable">$CA_TMPL</span></span><br><span class="line">cn = <span class="string">"VPN CA"</span></span><br><span class="line">serial = 1</span><br><span class="line">expiration_days = 3650</span><br><span class="line">ca</span><br><span class="line">signing_key</span><br><span class="line">cert_signing_key</span><br><span class="line">crl_signing_key</span><br><span class="line">_EOF_</span><br><span class="line"></span><br><span class="line">    <span class="comment"># CA Private Key</span></span><br><span class="line">    [[ -f <span class="variable">$CA_KEY</span> ]] || certtool --generate-privkey --outfile <span class="variable">$CA_KEY</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># CA Certificate</span></span><br><span class="line">    [[ -f <span class="variable">$CA_CERT</span> ]] || certtool --generate-self-signed --load-privkey <span class="variable">$CA_KEY</span> --template <span class="variable">$CA_TMPL</span> --outfile <span class="variable">$CA_CERT</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">generate</span></span>() &#123;</span><br><span class="line">    <span class="comment"># User Template</span></span><br><span class="line">    cat &lt;&lt; _EOF_ &gt; <span class="variable">$USER_TMPL</span></span><br><span class="line">cn = <span class="string">"<span class="variable">$USER</span>"</span></span><br><span class="line">expiration_days = 3650</span><br><span class="line">signing_key</span><br><span class="line">tls_www_client</span><br><span class="line">_EOF_</span><br><span class="line"></span><br><span class="line">    <span class="comment"># User Private Key</span></span><br><span class="line">    certtool --generate-privkey --outfile <span class="variable">$USER_KEY</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># User Certificate</span></span><br><span class="line">    certtool --generate-certificate --load-privkey <span class="variable">$USER_KEY</span> --load-ca-certificate <span class="variable">$CA_CERT</span> --load-ca-privkey <span class="variable">$CA_KEY</span> --template <span class="variable">$USER_TMPL</span> --outfile <span class="variable">$USER_CERT</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Export User Certificate</span></span><br><span class="line">    certtool --to-p12 --pkcs-cipher 3des-pkcs12 --load-privkey <span class="variable">$USER_KEY</span> --load-certificate <span class="variable">$USER_CERT</span> --outfile <span class="variable">$USER_P12</span> --outder</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">revoke</span></span>() &#123;</span><br><span class="line">    <span class="comment"># Copy User Certificate to Revoked Certificate</span></span><br><span class="line">    cat <span class="variable">$USER_CERT</span> &gt;&gt; <span class="variable">$REVOKED_CERT</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># CRL Template</span></span><br><span class="line">    [[ -f <span class="variable">$CRL_TMPL</span> ]] || cat &lt;&lt; _EOF_ &gt; <span class="variable">$CRL_TMPL</span></span><br><span class="line">crl_next_update = 3650</span><br><span class="line">crl_number = 1</span><br><span class="line">_EOF_</span><br><span class="line"></span><br><span class="line">    <span class="comment"># CRL Certificate</span></span><br><span class="line">    certtool --generate-crl --load-certificate <span class="variable">$REVOKED_CERT</span> --load-ca-privkey <span class="variable">$CA_KEY</span> --load-ca-certificate <span class="variable">$CA_CERT</span> --template <span class="variable">$CRL_TMPL</span> --outfile <span class="variable">$CRL_CERT</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">    generate)</span><br><span class="line">        init <span class="variable">$2</span></span><br><span class="line">        generate</span><br><span class="line">        ;;</span><br><span class="line">    revoke)</span><br><span class="line">        init <span class="variable">$2</span></span><br><span class="line">        revoke</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"\</span></span><br><span class="line"><span class="string">Usage:</span></span><br><span class="line"><span class="string">    <span class="variable">$0</span> generate USER</span></span><br><span class="line"><span class="string">    <span class="variable">$0</span> revoke USER</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="ocserv"><a href="#ocserv" class="headerlink" title="ocserv"></a>ocserv</h2><h3 id="编译安装-ocserv"><a href="#编译安装-ocserv" class="headerlink" title="编译安装 ocserv"></a>编译安装 ocserv</h3><p>注意安装依赖，阅读 <code>README.md</code> 即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">VERSION=<span class="string">'0.10.11'</span></span><br><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">wget ftp://ftp.infradead.org/pub/ocserv/ocserv-<span class="variable">$&#123;VERSION&#125;</span>.tar.xz</span><br><span class="line">tar xvf ocserv-<span class="variable">$&#123;VERSION&#125;</span>.tar.xz</span><br><span class="line"><span class="built_in">cd</span> ocserv-<span class="variable">$&#123;VERSION&#125;</span></span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置-ocserv"><a href="#配置-ocserv" class="headerlink" title="配置 ocserv"></a>配置 ocserv</h3><p>复制配置文件：<code>cp /opt/ocserv-${VERSION}/doc/sample.config /etc/ocserv/ocserv.conf</code><br>修改以下项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 打开 PMTUD</span><br><span class="line">try-mtu-discovery = true</span><br><span class="line"></span><br><span class="line"># 以 CN 为用户 ID。（用户证书认证）</span><br><span class="line">cert-user-oid = 2.5.4.3</span><br><span class="line"></span><br><span class="line"># 服务器证书与密钥（Let&apos;s Encrypt）</span><br><span class="line">server-cert = /etc/letsencrypt/live/DOMAIN/fullchain.pem</span><br><span class="line">server-key = /etc/letsencrypt/live/DOMAIN/privkey.pem</span><br><span class="line"></span><br><span class="line"># 如有需要，可修改 VPN 端口</span><br><span class="line">tcp-port = 443</span><br><span class="line">udp-port = 443</span><br><span class="line"></span><br><span class="line"># 修改 VPN 子网网段（避免和常用内网网段相同）</span><br><span class="line">ipv4-network = 192.168.111/24</span><br><span class="line"></span><br><span class="line"># 修改 DNS</span><br><span class="line">dns = 8.8.8.8</span><br><span class="line">dns = 8.8.4.4</span><br><span class="line"></span><br><span class="line"># 注释掉所有的 route，让服务器成为 gateway</span><br><span class="line">#route = 192.168.1.0/255.255.255.0</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置服务器"><a href="#配置服务器" class="headerlink" title="配置服务器"></a>配置服务器</h3><p>修改 <code>/etc/sysctl.conf</code> 中的 <code>net.ipv4.ip_forward=1</code>，然后刷新配置 <code>sysctl -p /etc/sysctl.conf</code>。<br>修改 iptables，注意对 iptables 做持久化。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 若强化了服务器安全，需要开放 443 端口。</span></span><br><span class="line">iptables -A INPUT -p tcp -m state --state NEW --dport 443 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p udp -m state --state NEW --dport 443 -j ACCEPT</span><br><span class="line">iptables -D FORWARD -j DROP</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开 NAT</span></span><br><span class="line">iptables -t nat -A POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-ocserv"><a href="#测试-ocserv" class="headerlink" title="测试 ocserv"></a>测试 ocserv</h3><p>修改 <code>ocserv.conf</code> 中的 <code>auth = &quot;plain[passwd=/etc/ocserv/passwd]&quot;</code>。<br>创建用户 <code>ocpasswd -c /etc/ocserv/passwd your-username</code>。<br>运行 ocserv <code>ocserv -f -d 1</code>，在手机上尝试连接。  </p>
+<h3 id="配置证书认证"><a href="#配置证书认证" class="headerlink" title="配置证书认证"></a>配置证书认证</h3><p>修改 <code>/etc/ocserv/ocserv.conf</code> 中的以下项：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auth = <span class="string">"certificate"</span></span><br><span class="line">ca-cert = /etc/ocserv/certs/ca-cert.pem</span><br></pre></td></tr></table></figure><br>重新运行、测试连接。  </p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="以-service-运行-ocserv-（Ubuntu）"><a href="#以-service-运行-ocserv-（Ubuntu）" class="headerlink" title="以 service 运行 ocserv （Ubuntu）"></a>以 service 运行 ocserv （Ubuntu）</h3><p>执行以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ln -s /lib/init/upstart-job /etc/init.d/ocserv</span><br><span class="line"></span><br><span class="line">cat &lt;&lt; _EOF_ &gt; /etc/init/ocserv.conf</span><br><span class="line"><span class="comment">#!upstart</span></span><br><span class="line">description <span class="string">"OpenConnect Server"</span></span><br><span class="line"></span><br><span class="line">start on runlevel [2345]</span><br><span class="line">stop on runlevel [06]</span><br><span class="line"></span><br><span class="line">respawn</span><br><span class="line">respawn <span class="built_in">limit</span> 20 5</span><br><span class="line"></span><br><span class="line">script</span><br><span class="line">    <span class="built_in">exec</span> start-stop-daemon --start --pidfile /var/run/ocserv.pid --<span class="built_in">exec</span> /usr/<span class="built_in">local</span>/sbin/ocserv -- -f &gt;&gt; /dev/null 2&gt;&amp;1</span><br><span class="line">end script</span><br><span class="line">_EOF_</span><br></pre></td></tr></table></figure><br>启动服务：<code>service ocserv start</code><br>停止服务：<code>service ocserv stop</code>  </p>
+<h3 id="方便的安装用户证书（iOS）"><a href="#方便的安装用户证书（iOS）" class="headerlink" title="方便的安装用户证书（iOS）"></a>方便的安装用户证书（iOS）</h3><ol>
+<li>将生成的用户证书 <code>USER.p12</code> 复制到 <code>WEBROOT</code>。</li>
+<li>打开 AnyConnect 客户端，切换到 Diagnostics 页。</li>
+<li>点击 Certificates 项，点击 Import User Certiticate…</li>
+<li>输入 <code>http://DOMAIN/USER.p12</code>，然后输入密码。</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://touko.moe/blog/letsencrypt-ocserv-or-more" target="_blank" rel="noopener">Linux簡易配置Let’s Encrypt證書及其在Anyconnect中的使用方法</a></li>
+<li><a href="http://bitinn.net/11084/" target="_blank" rel="noopener">折腾笔记：架设OpenConnect Server给iPhone提供更顺畅的网络生活</a></li>
+<li><a href="https://github.com/blackgear/blog_article/blob/master/_posts/setup-debian-ocserv.md" target="_blank" rel="noopener">Ocserv在Debian下的安装与配置指南</a></li>
+</ul>
+<h2 id="历史记录"><a href="#历史记录" class="headerlink" title="历史记录"></a>历史记录</h2><p>20160215：Init<br>20161018：使用 certbot（CentOS）  </p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/img/avatar.png" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Dazzy Ding">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/setup-wireguard/">安装 WireGuard 访问家里设备</a>
+        </p>
+    
+        <p>
+            <a href="/how-to-draw-a-kancolle-map/">How to Draw a KanColle Map</a>
+        </p>
+    
+        <p>
+            <a href="/kancolle-obfuscation/">「艦隊これくしょん」混淆与反混淆</a>
+        </p>
+    
+        <p>
+            <a href="/ocserv-letsencrypt-certificate/">ocserv + Let&#39;s Encrypt + 证书认证</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/yukixz" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://t.me/yukixz" target="_blank">
+                            <i class="fa fa-telegram"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/yukixz" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://steamcommunity.com/id/yukixz/" target="_blank">
+                            <i class="fa fa-steam"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/atom.xml" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2019 Dazzy Ding.
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Mermaid Diagrams -->
+
+<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+<script>
+    (function(){
+    if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+    }
+    }());
+</script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
