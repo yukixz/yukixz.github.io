@@ -75,7 +75,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: anodyne
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -83,6 +83,27 @@ deploy:
   type: git
   repo: git@github.com:yukixz/yukixz.github.io.git
   branch: master
+
+# Theme: anodyne
+theme_config:
+  index_banner_text: Dazzy Ding
+  index_banner_text_secondary:
+  about_widget_avatar_url: /img/avatar.png
+  about_widget_text:
+  footer_about: "© 2019 Dazzy Ding."
+
+  google_analytics: UA-77259235-1
+  menu:
+    Home: /
+    Archives: /archives
+    About: https://dazzyd.org/
+  social_platforms:
+    - url: https://twitter.com/yukixz
+      fa_icon: fa-twitter
+    - url: https://github.com/yukixz
+      fa_icon: fa-github
+    - url: /atom.xml
+      fa_icon: fa-rss
 
 # Extensions: feed
 feed:
