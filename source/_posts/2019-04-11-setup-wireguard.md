@@ -77,8 +77,8 @@ ListenPort = 12450
 PrivateKey = [ServerPriKey]
 
 # eth0 should be your internet interface
-PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+PostUp = iptables -A FORWARD -i %i -j ACCEPT
+PostDown = iptables -D FORWARD -i %i -j ACCEPT
 
 [Peer]
 AllowedIPs = 10.42.1.2/24
@@ -97,4 +97,12 @@ PublicKey = [ServerPubKey]
 AllowedIPs = 10.42.0.0/24, 10.42.1.0/24     # 只有内部网络走VPN
 Endpoint = 11.11.11.11:12450
 PersistentKeepalive = 30
+```
+
+## 网关配置
+
+物理网关需要配置静态路由到 VPN网关；VPN 服务端为物理网络成员，无需配置路由。
+
+```
+$ ip route add 10.42.1.0/24 via 10.42.0.2
 ```
