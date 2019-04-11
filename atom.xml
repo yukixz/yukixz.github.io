@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.dazzyd.org/"/>
-  <updated>2018-10-19T11:26:45.569Z</updated>
+  <updated>2019-04-11T07:41:33.959Z</updated>
   <id>https://blog.dazzyd.org/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>安装 WireGuard 访问家里设备</title>
+    <link href="https://blog.dazzyd.org/2019/04/11/setup-wireguard/"/>
+    <id>https://blog.dazzyd.org/2019/04/11/setup-wireguard/</id>
+    <published>2019-04-11T02:18:10.000Z</published>
+    <updated>2019-04-11T07:41:33.959Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 就是用来干这个的。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 &lt;a href=&quot;https://www.wireguard.com/&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="WireGuard" scheme="https://blog.dazzyd.org/tags/WireGuard/"/>
+    
+      <category term="VPN" scheme="https://blog.dazzyd.org/tags/VPN/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Draw a KanColle Map</title>

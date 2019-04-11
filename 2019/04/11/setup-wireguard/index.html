@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 就是用来干这个的。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 WireGuard 作为 VPN 方案。
+WireGuard 中所有节点均为对等节点 Peer，不存在服务端和客户端的">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Dazzy Ding">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="安装 WireGuard 访问家里设备">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Dazzy Ding">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>安装 WireGuard 访问家里设备 - Dazzy Ding</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77259235-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Dazzy Ding">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Dazzy Ding">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="https://dazzyd.org/" title="About">
+                    About
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">安装 WireGuard 访问家里设备</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-04-11</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/WireGuard/">#WireGuard</a> <a class="fw3 ph1 dib" href="/tags/VPN/">#VPN</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <p>在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 就是用来干这个的。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 <a href="https://www.wireguard.com/" target="_blank" rel="noopener">WireGuard</a> 作为 VPN 方案。</p>
+<p>WireGuard 中所有节点均为对等节点 Peer，不存在服务端和客户端的概念。但是我们可以人为划分节点角色，不同角色使用不同的配置也可以实现C/S模式。</p>
+<h2 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h2><p>家里已经有一个物理网络<code>10.42.0.0/24</code>，网关为路由器<code>10.42.0.1</code>，有几种可行方案：</p>
+<ol>
+<li>路由器<code>10.42.0.1</code>提供了 OpenVPN 服务端，但其版本未知，存在极大安全风险。</li>
+<li>单独搭建 VPN 服务端，配置 ARP 转发到路由器<code>10.42.0.1</code>，由路由器提供网关身份。<a href="https://jimmyxu.org/" target="_blank" rel="noopener">Jimmy Xu</a> 强烈不建议这么做，ARP 转发很麻烦。</li>
+</ol>
+<p>最终采用以下方案：</p>
+<ul>
+<li>单独搭建 VPN 服务端，使用独立的虚拟网络 <code>10.42.1.0/24</code>；</li>
+<li>路由器对 VPN 服务端口做端口转发，将 VPN 服务端暴露到互联网；</li>
+<li>VPN 服务端同时具备物理网络身份 <code>10.42.0.2</code>；</li>
+<li>VPN 服务端和路由器（物理网络网关）相互做静态路由。</li>
+</ul>
+<pre class="mermaid">graph LR
+client[WG Client<br>22.22.22.22<br>10.42.1.2] -. WireGuard .- server
+client -- WG UDP --- router
+subgraph HOME:10.42.0.0/24
+router[Router<br>11.11.11.11<br>10.42.0.1]
+router -- WG UDP<br>Port Forward --- server[WG Server<br>10.42.0.2<br>10.42.1.1]
+router --- NAS[NAS<br>10.42.0.11]
+router --- Camera[Camera<br>10.42.0.12]
+end</pre>
+
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>VPN Server</th>
+<th>VPN Client</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External IP</td>
+<td><code>11.11.11.11</code></td>
+<td><code>22.22.22.22</code></td>
+</tr>
+<tr>
+<td>Internal IP</td>
+<td><code>10.42.1.1/24</code></td>
+<td><code>10.42.1.2/24</code></td>
+</tr>
+<tr>
+<td>WG Port</td>
+<td><code>12450</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><ul>
+<li>Arch Linux: 5.0.7-1-ARCH</li>
+<li>WireGuard: 0.0.20190406</li>
+</ul>
+<h2 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h2><p>生成私钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wg genkey &gt; prikey</span><br><span class="line">$ chmod 600 prikey</span><br></pre></td></tr></table></figure></p>
+<p>生成公钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wg pubkey &lt; prikey &gt; pubkey</span><br></pre></td></tr></table></figure></p>
+<p>一行搞定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wg genkey | tee prikey | wg pubkey | tee pubkey</span><br><span class="line">## 输出为 pubkey</span><br></pre></td></tr></table></figure></p>
+<h2 id="WireGuard-配置"><a href="#WireGuard-配置" class="headerlink" title="WireGuard 配置"></a>WireGuard 配置</h2><p>服务端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Interface]</span><br><span class="line">Address = 10.42.1.1/24</span><br><span class="line">ListenPort = 12450</span><br><span class="line">PrivateKey = [ServerPriKey]</span><br><span class="line"></span><br><span class="line"># eth0 should be your internet interface</span><br><span class="line">PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br><span class="line">PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">AllowedIPs = 10.42.1.2/24</span><br><span class="line">PublicKey = [ClientPubKey]</span><br><span class="line">PersistentKeepalive = 30</span><br></pre></td></tr></table></figure></p>
+<p>客户端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Interface]</span><br><span class="line">Address = 10.42.1.2/24                      # 客户端虚拟地址</span><br><span class="line">PrivateKey = [ClientPriKey]</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">PublicKey = [ServerPubKey]</span><br><span class="line">AllowedIPs = 10.42.0.0/24, 10.42.1.0/24     # 只有内部网络走VPN</span><br><span class="line">Endpoint = 11.11.11.11:12450</span><br><span class="line">PersistentKeepalive = 30</span><br></pre></td></tr></table></figure></p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/WireGuard/">#WireGuard</a> <a class="fw3 ph1 dib" href="/tags/VPN/">#VPN</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/img/avatar.png" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Dazzy Ding">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/04/11/setup-wireguard/">安装 WireGuard 访问家里设备</a>
+        </p>
+    
+        <p>
+            <a href="/2016/12/14/how-to-draw-a-kancolle-map/">How to Draw a KanColle Map</a>
+        </p>
+    
+        <p>
+            <a href="/2016/03/17/kancolle-obfuscation/">「艦隊これくしょん」混淆与反混淆</a>
+        </p>
+    
+        <p>
+            <a href="/2016/02/15/ocserv-letsencrypt-certificate/">ocserv + Let&#39;s Encrypt + 证书认证</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/yukixz" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://t.me/yukixz" target="_blank">
+                            <i class="fa fa-telegram"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/yukixz" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://steamcommunity.com/id/yukixz/" target="_blank">
+                            <i class="fa fa-steam"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/atom.xml" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2019 Dazzy Ding.
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Mermaid Diagrams -->
+
+<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+<script>
+    (function(){
+    if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+    }
+    }());
+</script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
