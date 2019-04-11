@@ -76,9 +76,9 @@ Address = 10.42.1.1/24
 ListenPort = 12450
 PrivateKey = [ServerPriKey]
 
-# eth0 should be your internet interface
-PostUp = iptables -A FORWARD -i %i -j ACCEPT
-PostDown = iptables -D FORWARD -i %i -j ACCEPT
+# Required when iptables chain FORWARD's policy is not ACCEPT.
+#PostUp = iptables -A FORWARD -i %i -j ACCEPT
+#PostDown = iptables -D FORWARD -i %i -j ACCEPT
 
 [Peer]
 AllowedIPs = 10.42.1.2/24
