@@ -98,10 +98,14 @@ theme_config:
     Archives: /archives
     About: https://dazzyd.org/
   social_platforms:
-    - url: https://twitter.com/yukixz
-      fa_icon: fa-twitter
     - url: https://github.com/yukixz
       fa_icon: fa-github
+    - url: https://t.me/yukixz
+      fa_icon: fa-telegram-plane
+    - url: https://twitter.com/yukixz
+      fa_icon: fa-twitter
+    - url: https://steamcommunity.com/id/yukixz/
+      fa_icon: fa-steam
     - url: /atom.xml
       fa_icon: fa-rss
 
