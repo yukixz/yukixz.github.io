@@ -72,11 +72,6 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: anodyne
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
@@ -85,6 +80,7 @@ deploy:
   branch: master
 
 # Theme: anodyne
+theme: anodyne
 theme_config:
   index_banner_text: Dazzy Ding
   index_banner_text_secondary:
@@ -101,7 +97,7 @@ theme_config:
     - url: https://github.com/yukixz
       fa_icon: fa-github
     - url: https://t.me/yukixz
-      fa_icon: fa-telegram-plane
+      fa_icon: fa-telegram
     - url: https://twitter.com/yukixz
       fa_icon: fa-twitter
     - url: https://steamcommunity.com/id/yukixz/
@@ -109,7 +105,7 @@ theme_config:
     - url: /atom.xml
       fa_icon: fa-rss
 
-# Extensions: feed
+# Extension: feed
 feed:
   type: atom
   path: atom.xml
@@ -119,3 +115,7 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+# Extension: mermaid
+mermaid:
+  version: "7.1.2"
