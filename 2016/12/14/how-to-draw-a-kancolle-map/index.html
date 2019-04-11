@@ -1,106 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<!-- Head tag -->
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
 
-  
-  <title>How to Draw a KanColle Map | Dazzy Ding</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is a post about how kcmap draw a SVG using map SWF only.  Basic KnowledgeIn order to understand this post, you may need these knowledge. Display Container of Flash (AS3)Flash (AS3) renders its di">
-<meta property="og:type" content="article">
-<meta property="og:title" content="How to Draw a KanColle Map">
-<meta property="og:url" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/index.html">
-<meta property="og:site_name" content="Dazzy Ding">
-<meta property="og:description" content="This is a post about how kcmap draw a SVG using map SWF only.  Basic KnowledgeIn order to understand this post, you may need these knowledge. Display Container of Flash (AS3)Flash (AS3) renders its di">
-<meta property="og:locale" content="zh">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_final.svg">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_mc_23_11.png">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_mc_23.png">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_11_guess_1.png">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_11_guess_2.png">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_11_guess_3.png">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_11_guess_4.png">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23.svg">
-<meta property="og:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_final.svg">
-<meta property="og:updated_time" content="2018-10-19T11:26:45.569Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Draw a KanColle Map">
-<meta name="twitter:description" content="This is a post about how kcmap draw a SVG using map SWF only.  Basic KnowledgeIn order to understand this post, you may need these knowledge. Display Container of Flash (AS3)Flash (AS3) renders its di">
-<meta name="twitter:image" content="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_final.svg">
-  
-    <link rel="alternate" href="/atom.xml" title="Dazzy Ding" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a post about how kcmap draw a SVG using map SWF only.
+
+Basic KnowledgeIn order to understand this post, you may need these knowledge.
+Display ">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Dazzy Ding">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="How to Draw a KanColle Map">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Dazzy Ding">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>How to Draw a KanColle Map - Dazzy Ding</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77259235-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
 </head>
-</html>
+
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Dazzy Ding</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.dazzyd.org"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-how-to-draw-a-kancolle-map" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/14/how-to-draw-a-kancolle-map/" class="article-date">
-  <time datetime="2016-12-13T16:00:00.000Z" itemprop="datePublished">2016-12-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/kancolle/">kancolle</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      How to Draw a KanColle Map
-    </h1>
-  
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Dazzy Ding">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Dazzy Ding">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="https://dazzyd.org/" title="About">
+                    About
+                </a>
+            
+        </div>
+    </nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This is a post about how <a href="https://github.com/yukixz/kcmap" target="_blank" rel="noopener">kcmap</a> draw a SVG using map SWF only.</p>
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">How to Draw a KanColle Map</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2016-12-14</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <p>This is a post about how <a href="https://github.com/yukixz/kcmap" target="_blank" rel="noopener">kcmap</a> draw a SVG using map SWF only.</p>
 <img src="/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_final.svg" title="kcmap 2-3 final">
 <h2 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h2><p>In order to understand this post, you may need these knowledge.</p>
 <h3 id="Display-Container-of-Flash-AS3"><a href="#Display-Container-of-Flash-AS3" class="headerlink" title="Display Container of Flash (AS3)"></a>Display Container of Flash (AS3)</h3><p>Flash (AS3) renders its display from a <code>DisplayObjectContainer</code> tree.<br>A container is isolated system, having self-governed coordinate system, child containers and so on.</p>
@@ -140,114 +173,108 @@
 <p>Let’s take a look at the title image again.</p>
 <img src="/2016/12/14/how-to-draw-a-kancolle-map/kcmap_23_final.svg" title="kcmap 2-3 final">
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.dazzyd.org/2016/12/14/how-to-draw-a-kancolle-map/" data-id="cjubw74j20002e5inmsrd5vof" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/img/avatar.png" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Dazzy Ding">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
     
-<nav id="article-nav">
-  
-  
-    <a href="/2016/03/17/kancolle-obfuscation/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">「艦隊これくしょん」混淆与反混淆</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
+        <p>
+            <a href="/categories/kancolle/">kancolle</a>
+        </p>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/kancolle/">kancolle</a></li></ul>
-    </div>
-  </div>
+</div>
 
 
-  
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
     
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
+        <p>
             <a href="/2016/12/14/how-to-draw-a-kancolle-map/">How to Draw a KanColle Map</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/17/kancolle-obfuscation/">「艦隊これくしょん」混淆与反混淆</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/15/ocserv-letsencrypt-certificate/">ocserv + Let&#39;s Encrypt + 证书认证</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Dazzy Ding<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+        </p>
     
+        <p>
+            <a href="/2016/03/17/kancolle-obfuscation/">「艦隊これくしょん」混淆与反混淆</a>
+        </p>
+    
+        <p>
+            <a href="/2016/02/15/ocserv-letsencrypt-certificate/">ocserv + Let&#39;s Encrypt + 证书认证</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/yukixz" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/yukixz" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/atom.xml" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2019 Dazzy Ding.
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 </body>
+
 </html>
