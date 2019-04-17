@@ -7,4 +7,4 @@ This is Dazzy Ding, aka yukixz, ks.magi.
 
 I'll finish writing this up later.
 
-<sub>[meme](https://www.scp-wiki.net/scp-j)</sub>
+<sub>[meme](http://www.scp-wiki.net/scp-j)</sub>
