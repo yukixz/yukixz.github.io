@@ -17,7 +17,7 @@ timezone: Asia/Hong_Kong
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://blog.dazzyd.org
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 
 # Directory
@@ -84,7 +84,7 @@ theme: anodyne
 theme_config:
   index_banner_text: Dazzy Ding
   index_banner_text_secondary:
-  about_widget_avatar_url: /img/avatar.png
+  about_widget_avatar_url: /assets/img/avatar.png
   about_widget_text:
   footer_about: "© 2019 Dazzy Ding."
 
@@ -92,7 +92,8 @@ theme_config:
   menu:
     Home: /
     Archives: /archives
-    About: https://dazzyd.org/
+    Tags: /tags
+    About: /about
   social_platforms:
     - url: https://github.com/yukixz
       fa_icon: fa-github
@@ -102,6 +103,8 @@ theme_config:
       fa_icon: fa-twitter
     - url: https://steamcommunity.com/id/yukixz/
       fa_icon: fa-steam
+    - url: /assets/B00A67D6.gpg
+      fa_icon: fa-key
     - url: /atom.xml
       fa_icon: fa-rss
 
