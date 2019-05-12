@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.dazzyd.org/"/>
-  <updated>2019-05-09T08:43:34.965Z</updated>
+  <updated>2019-05-12T14:53:35.301Z</updated>
   <id>https://blog.dazzyd.org/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux 通过 Samba+Avahi 搭建 Time Machine 服务</title>
+    <link href="https://blog.dazzyd.org/providing-time-machine-on-linux/"/>
+    <id>https://blog.dazzyd.org/providing-time-machine-on-linux/</id>
+    <published>2019-05-12T13:45:13.000Z</published>
+    <updated>2019-05-12T14:53:35.301Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/Time_Machine&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Time Machine&lt;/a&gt; 是 macOS
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://blog.dazzyd.org/tags/Linux/"/>
+    
+      <category term="Time Machine" scheme="https://blog.dazzyd.org/tags/Time-Machine/"/>
+    
+      <category term="Samba" scheme="https://blog.dazzyd.org/tags/Samba/"/>
+    
+      <category term="Avahi" scheme="https://blog.dazzyd.org/tags/Avahi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>V2Ray 路由配置与混淆配置</title>
     <link href="https://blog.dazzyd.org/v2ray-routing-obfuscation/"/>
     <id>https://blog.dazzyd.org/v2ray-routing-obfuscation/</id>
     <published>2019-05-08T03:50:05.000Z</published>
-    <updated>2019-05-09T08:43:34.965Z</updated>
+    <updated>2019-05-12T13:57:49.044Z</updated>
     
     <summary type="html">
     
@@ -41,6 +71,8 @@
       <category term="TLS" scheme="https://blog.dazzyd.org/tags/TLS/"/>
     
       <category term="WebSocket" scheme="https://blog.dazzyd.org/tags/WebSocket/"/>
+    
+      <category term="Configuration" scheme="https://blog.dazzyd.org/tags/Configuration/"/>
     
   </entry>
   
