@@ -5,7 +5,7 @@ tags: [ Linux, Time Machine, Samba, Avahi ]
 ---
 
 
-[Time Machine](https://zh.wikipedia.org/wiki/Time_Machine) 是 macOS 自带的系统级备份软件，配置完成后就可以在后台每天自动备份整机数据，防止手滑、丢失、送修等各种场景。然而实际上，除非购买苹果全家桶的 Time Capsule，不然每次备份还得手动移动硬盘，实在毫无便利性了。下面介绍一种方法，通过 [Samba](https://zh.wikipedia.org/wiki/Samba) 提供文件共享、 [Avahi](https://en.wikipedia.org/wiki/Avahi_(software)) 提供服务广播的方式，搭建通过网络进行备份的 Time Machine 备份服务器。
+[Time Machine](https://zh.wikipedia.org/wiki/Time_Machine) 是 macOS 自带的系统级备份软件，配置完成后就可以在后台每天自动备份整机数据，防止手滑、丢失、送修等各种场景。然而实际上，除非购买苹果全家桶的 Time Capsule，不然每次还得手动接上移动硬盘才会自动备份，实在毫无便利性了。下面介绍一种方法，通过 [Samba](https://zh.wikipedia.org/wiki/Samba) 提供文件共享、 [Avahi](https://en.wikipedia.org/wiki/Avahi_(software)) 提供服务广播的方式，搭建通过网络进行备份的 Time Machine 备份服务器，实现和 Time Capsule 体验一致的无干预自动备份。
 
 插播一句：Samba 最初是基于 Microsoft 的 SMB 文件共享协议开发的开源实现，Avahi 则是以 Apple 开源的 Bonjour 源码上发展而来的 zeroconf 实现，说到底还是原本就有的协议了。
 
@@ -83,3 +83,4 @@ Avahi 不需要配置。没错，直接启动就好了。
 ## 使用 Time Machine
 
 到这里就可以使用了，在 Preferences > Time Machine > Select Disk 中就可以看到刚才配置的 `Warden TM`，点击就可以使用了。
+甚至用 VPN 连回家里之后，Time Machine 也会[继续备份](https://twitter.com/yukixz/status/1125662375820972032)。
