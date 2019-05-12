@@ -1,10 +1,7 @@
 ---
 title: 'V2Ray 路由配置与混淆配置'
 date: 2019-05-08 11:50:05
-tags: 
-  - V2Ray
-  - TLS
-  - WebSocket
+tags: [ V2Ray, TLS, WebSocket, Configuration ]
 ---
 
 
