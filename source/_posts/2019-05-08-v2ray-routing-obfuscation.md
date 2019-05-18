@@ -137,6 +137,7 @@ v2ray-client 使用 VMess over WebSocket over TLS 连接代理服务器，并开
     "vnext": [
       {
         "address": "yourdomain.org",
+        "port": 443,
         "users": [{
           "id": "88888888-4444-4444-4444-cccccccccccc",
           "alterId": 64,
