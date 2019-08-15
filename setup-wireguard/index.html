@@ -10,8 +10,8 @@
 
     <!--Description-->
     
-        <meta name="description" content="在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 就是用来干这个的。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 WireGuard 作为 VPN 方案。
-WireGuard 中所有节点均为对等节点 Peer，不存在服务端和客户端的">
+        <meta name="description" content="在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 本来就是设计为实现这个需求的软件。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 WireGuard 作为 VPN 方案。
+WireGuard 协议中所有节点均为对等节点 Peer，不">
     
 
     <!--Author-->
@@ -21,7 +21,7 @@ WireGuard 中所有节点均为对等节点 Peer，不存在服务端和客户�
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="安装 WireGuard 访问家里设备">
+        <meta property="og:title" content="配置 WireGuard 接入家庭网络">
     
 
     <!--Open Graph Description-->
@@ -43,7 +43,7 @@ WireGuard 中所有节点均为对等节点 Peer，不存在服务端和客户�
 
     <!-- Title -->
     
-    <title>安装 WireGuard 访问家里设备 - Dazzy Ding</title>
+    <title>配置 WireGuard 接入家庭网络 - Dazzy Ding</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -114,7 +114,7 @@ WireGuard 中所有节点均为对等节点 Peer，不存在服务端和客户�
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">安装 WireGuard 访问家里设备</h1>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">配置 WireGuard 接入家庭网络</h1>
             <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-04-11</p>
         </div>
     </div>
@@ -141,19 +141,19 @@ WireGuard 中所有节点均为对等节点 Peer，不存在服务端和客户�
                     
 
                     <!-- Main Post Content -->
-                    <p>在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 就是用来干这个的。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 <a href="https://www.wireguard.com/" target="_blank" rel="noopener">WireGuard</a> 作为 VPN 方案。</p>
-<p>WireGuard 中所有节点均为对等节点 Peer，不存在服务端和客户端的概念。但是我们可以人为划分节点角色，不同角色使用不同的配置也可以实现C/S模式。</p>
+                    <p>在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 本来就是设计为实现这个需求的软件。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 <a href="https://www.wireguard.com/" target="_blank" rel="noopener">WireGuard</a> 作为 VPN 方案。</p>
+<p>WireGuard 协议中所有节点均为对等节点 Peer，不存在服务端和客户端的概念。但是我们可以人为划分节点角色，不同角色使用不同的配置也可以实现C/S模式。</p>
 <h2 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h2><p>家里已经有一个物理网络<code>10.42.0.0/24</code>，网关为路由器<code>10.42.0.1</code>，有几种可行方案：</p>
 <ol>
 <li>路由器<code>10.42.0.1</code>提供了 OpenVPN 服务端，但其版本未知，存在极大安全风险。</li>
 <li>单独搭建 VPN 服务端，配置 ARP 转发到路由器<code>10.42.0.1</code>，由路由器提供网关身份。<a href="https://jimmyxu.org/" target="_blank" rel="noopener">Jimmy Xu</a> 强烈不建议这么做，ARP 转发很麻烦。</li>
 </ol>
-<p>最终采用以下方案：</p>
+<p><del>最终采用以下方案：</del></p>
 <ul>
-<li>单独搭建 VPN 服务端，使用独立的虚拟网络 <code>10.42.1.0/24</code>；</li>
-<li>路由器对 VPN 服务端口做端口转发，将 VPN 服务端暴露到互联网；</li>
-<li>VPN 服务端同时具备物理网络身份 <code>10.42.0.2</code>；</li>
-<li>VPN 服务端和路由器（物理网络网关）相互做静态路由。</li>
+<li><del>单独搭建 VPN 服务端，使用独立的虚拟网络 <code>10.42.1.0/24</code>；</del></li>
+<li><del>路由器对 VPN 服务端口做端口转发，将 VPN 服务端暴露到互联网；</del></li>
+<li><del>VPN 服务端同时具备物理网络身份 <code>10.42.0.2</code>；</del></li>
+<li><del>VPN 服务端和路由器（物理网络网关）相互做静态路由。</del></li>
 </ul>
 <pre class="mermaid">graph LR
 client[WG Client<br>22.22.22.22<br>10.42.1.2] -. WireGuard .- server
@@ -161,6 +161,20 @@ client -- WG UDP --- router
 subgraph HOME:10.42.0.0/24
 router[Router<br>11.11.11.11<br>10.42.0.1]
 router -- WG UDP<br>Port Forward --- server[WG Server<br>10.42.0.2<br>10.42.1.1]
+router --- NAS[NAS<br>10.42.0.11]
+router --- Camera[Camera<br>10.42.0.12]
+end</pre>
+
+<p><em>(Update 2019-05-15)</em> 由于购置了 OpenWRT 路由器，路由器<code>10.42.0.1</code>可以提供 WireGuard VPN 服务了，所以改用架构更为简洁的第一种方案。</p>
+<ul>
+<li>在路由器上搭建 VPN 服务端，使用独立的网络 <code>10.42.1.0/24</code>；</li>
+<li>在路由器的 WAN 口放开互联网对 VPN 服务端口的访问；</li>
+<li>路由器同时作为两个网络 <code>10.42.0.0/24</code> 和  <code>10.42.1.0/24</code> 的网关。</li>
+</ul>
+<pre class="mermaid">graph LR
+client[WG Client<br>22.22.22.22<br>10.42.1.2] -. WireGuard .- router
+subgraph HOME:10.42.0.0/24
+router[Router<br>11.11.11.11<br>10.42.0.1<br>10.42.1.1]
 router --- NAS[NAS<br>10.42.0.11]
 router --- Camera[Camera<br>10.42.0.12]
 end</pre>
@@ -200,7 +214,7 @@ end</pre>
 <p>一行搞定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wg genkey | tee prikey | wg pubkey | tee pubkey</span><br><span class="line">## 输出为 pubkey</span><br></pre></td></tr></table></figure></p>
 <h2 id="WireGuard-配置"><a href="#WireGuard-配置" class="headerlink" title="WireGuard 配置"></a>WireGuard 配置</h2><p>服务端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Interface]</span><br><span class="line">Address = 10.42.1.1/24</span><br><span class="line">ListenPort = 12450</span><br><span class="line">PrivateKey = [ServerPriKey]</span><br><span class="line"></span><br><span class="line"># Required when iptables chain FORWARD&apos;s policy is not ACCEPT.</span><br><span class="line">#PostUp = iptables -A FORWARD -i %i -j ACCEPT</span><br><span class="line">#PostDown = iptables -D FORWARD -i %i -j ACCEPT</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">AllowedIPs = 10.42.1.2/24</span><br><span class="line">PublicKey = [ClientPubKey]</span><br><span class="line">PersistentKeepalive = 30</span><br></pre></td></tr></table></figure></p>
 <p>客户端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Interface]</span><br><span class="line">Address = 10.42.1.2/24                      # 客户端虚拟地址</span><br><span class="line">PrivateKey = [ClientPriKey]</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">PublicKey = [ServerPubKey]</span><br><span class="line">AllowedIPs = 10.42.0.0/24, 10.42.1.0/24     # 只有内部网络走VPN</span><br><span class="line">Endpoint = 11.11.11.11:12450</span><br><span class="line">PersistentKeepalive = 30</span><br></pre></td></tr></table></figure></p>
-<h2 id="网关配置"><a href="#网关配置" class="headerlink" title="网关配置"></a>网关配置</h2><p>物理网关需要配置静态路由到 VPN网关；VPN 服务端为物理网络成员，无需配置路由。</p>
+<h2 id="网关配置"><a href="#网关配置" class="headerlink" title="网关配置"></a><del>网关配置</del></h2><p><del>物理网关需要配置静态路由到 VPN网关；VPN 服务端为物理网络成员，无需配置路由。</del></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ip route add 10.42.1.0/24 via 10.42.0.2</span><br></pre></td></tr></table></figure>
                     
                     <!-- Tags Bottom -->
@@ -250,7 +264,7 @@ end</pre>
         </p>
     
         <p>
-            <a href="/setup-wireguard/">安装 WireGuard 访问家里设备</a>
+            <a href="/setup-wireguard/">配置 WireGuard 接入家庭网络</a>
         </p>
     
         <p>

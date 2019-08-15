@@ -77,11 +77,11 @@
   </entry>
   
   <entry>
-    <title>安装 WireGuard 访问家里设备</title>
+    <title>配置 WireGuard 接入家庭网络</title>
     <link href="https://blog.dazzyd.org/setup-wireguard/"/>
     <id>https://blog.dazzyd.org/setup-wireguard/</id>
     <published>2019-04-11T02:18:10.000Z</published>
-    <updated>2019-04-11T08:25:44.229Z</updated>
+    <updated>2019-08-15T11:57:35.921Z</updated>
     
     <summary type="html">
     
@@ -89,7 +89,7 @@
       
         
         
-          &lt;p&gt;在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 就是用来干这个的。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 &lt;a href=&quot;https://www.wireguard.com/&quot;
+          &lt;p&gt;在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 本来就是设计为实现这个需求的软件。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 &lt;a href=&quot;https://www.wireguard.com/&quot;
         
       
     
