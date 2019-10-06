@@ -37,7 +37,7 @@
     <div class="content">
         <div class="mw8 center">
             <% postList.each(function(item){ %>
-                <%- partial('_partial/article-archive', {item: item}) %>
+                <%- item.hidden ? '' : partial('_partial/article-archive', {item: item}) %>
             <% }); %>
         </div>
     </div>
