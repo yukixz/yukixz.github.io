@@ -2,6 +2,7 @@
 title: ocserv + Let's Encrypt + 证书认证
 categories: 
 alias: /blog/2016/02/15/ocserv-letsencrypt-certificate/
+hidden: yes
 ---
 
 本文需要基础 Linux 知识与网络知识。  
