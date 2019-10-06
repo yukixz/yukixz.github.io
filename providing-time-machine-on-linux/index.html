@@ -45,7 +45,7 @@
     <title>Linux 通过 Samba+Avahi 搭建 Time Machine 服务 - Dazzy Ding</title>
 
     <!-- Tachyons Core CSS -->
-    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
 
     <!-- Custom Fonts -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -155,12 +155,12 @@
 <li>挂载备份硬盘：<code>disk</code>、<code>mkfs.ext4 ...</code>、<code>vim /etc/fstab</code>、<code>mount -a</code></li>
 </ol>
 <h2 id="配置-Samba"><a href="#配置-Samba" class="headerlink" title="配置 Samba"></a>配置 Samba</h2><p>首先，我们需要配置 Samba 提供文件共享服务，让 macOS 能够访问到备份数据路径。</p>
-<p>首先，需要添加一个 Time Machine 专用的用户。我这里使用了个人用户，反正都是个人数据。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> useradd dazzy</span><br></pre></td></tr></table></figure></p>
-<p>然后，设置该用户的 Samba 协议密码，这个密码跟 Linux 系统用户密码是相互独立的，需要单独设置。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> smbpasswd -a dazzy</span><br></pre></td></tr></table></figure></p>
+<p>首先，需要添加一个 Time Machine 专用的用户。我这里使用了个人用户，反正都是个人数据。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd dazzy</span></span><br></pre></td></tr></table></figure></p>
+<p>然后，设置该用户的 Samba 协议密码，这个密码跟 Linux 系统用户密码是相互独立的，需要单独设置。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> smbpasswd -a dazzy</span></span><br></pre></td></tr></table></figure></p>
 <p>接着，就是配置 Samba 让它把备份数据路径暴露出去，直接贴配置文件了。<br><figure class="highlight"><figcaption><span>/etc/samba/smb.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[global]</span></span><br><span class="line">server role = standalone server</span><br><span class="line">hosts allow = 10.42.0.</span><br><span class="line">log file = /var/log/samba/%m.log</span><br><span class="line">map to guest = Bad User</span><br><span class="line">unix extensions = no</span><br><span class="line">allow insecure wide links = yes</span><br><span class="line">follow symlinks = yes</span><br><span class="line">wide links = yes</span><br><span class="line"></span><br><span class="line"><span class="section">[Warden TM]</span>                 <span class="comment">; 服务名称，会显示在 Time Machine 备份界面</span></span><br><span class="line"><span class="attr">path</span> = /data/timemachine    ; 备份数据路径</span><br><span class="line"><span class="attr">writable</span> = <span class="literal">yes</span>              ; 允许SMB客户端写入</span><br><span class="line">valid users = dazzy         ; 允许访问的用户列表，避免备份数据泄漏</span><br><span class="line"><span class="comment">; catia: 兼容linux/macos中合法但在Windows/SMB中非法的字符</span></span><br><span class="line"><span class="comment">; fruit: 增强macos的的兼容性，并提供Netatalk AFP服务</span></span><br><span class="line"><span class="comment">; streams_xattr: 通过Linux文件系统提供Windows NTFS属性字段</span></span><br><span class="line">vfs objects = catia fruit streams_xattr</span><br><span class="line">fruit:aapl = yes            ; 启用Apple SMB客户端兼容</span><br><span class="line">fruit:model = MacPro        ; 修改一下Finder里的图标</span><br><span class="line">fruit:time machine = yes    ; 重要！开启 Time Machine 支持！</span><br></pre></td></tr></table></figure></p>
-<p>最后，就是把 Samba 服务起来啦，这里不要起错成 <code>samba</code> 了。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> systemctl enable --now smb</span><br></pre></td></tr></table></figure></p>
+<p>最后，就是把 Samba 服务起来啦，这里不要起错成 <code>samba</code> 了。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> systemctl <span class="built_in">enable</span> --now smb</span></span><br></pre></td></tr></table></figure></p>
 <p>这时候就可以通过 macOS Finder 里面的 Go &gt; Connect to Server 验证一下 Samba 服务是否正常了。</p>
-<h2 id="配置-Avahi"><a href="#配置-Avahi" class="headerlink" title="配置 Avahi"></a>配置 Avahi</h2><p>Avahi 不需要配置。没错，直接启动就好了。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> systemctl enable --now avahi-daemon</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置-Avahi"><a href="#配置-Avahi" class="headerlink" title="配置 Avahi"></a>配置 Avahi</h2><p>Avahi 不需要配置。没错，直接启动就好了。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> systemctl <span class="built_in">enable</span> --now avahi-daemon</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="使用-Time-Machine"><a href="#使用-Time-Machine" class="headerlink" title="使用 Time Machine"></a>使用 Time Machine</h2><p>到这里就可以使用了，在 Preferences &gt; Time Machine &gt; Select Disk 中就可以看到刚才配置的 <code>Warden TM</code>，点击就可以使用了。<br>甚至用 VPN 连回家里之后，Time Machine 也会<a href="https://twitter.com/yukixz/status/1125662375820972032" target="_blank" rel="noopener">继续备份</a>。</p>
 
                     
@@ -204,6 +204,10 @@
     
         <p>
             <a href="/providing-time-machine-on-linux/">Linux 通过 Samba+Avahi 搭建 Time Machine 服务</a>
+        </p>
+    
+        <p>
+            <a href="/v2ray-routing-obfuscation/">V2Ray 路由配置与混淆配置</a>
         </p>
     
         <p>
