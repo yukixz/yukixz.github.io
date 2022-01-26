@@ -83,18 +83,31 @@ deploy:
 # Theme: anodyne
 theme: anodyne
 theme_config:
+  # Logo
+  logo_image_source: /assets/img/anodyne.svg
+  # Index Page
   index_banner_text: Dazzy Ding
   index_banner_text_secondary:
-  about_widget_avatar_url: /assets/img/avatar.png
-  about_widget_text:
-  footer_about: "© 2019 Dazzy Ding."
-
-  google_analytics: UA-77259235-1
+  index_font_awesome_icon_css: fa fa-magic
+  # Header
   menu:
     Home: /
     Archives: /archives
     Tags: /tags
     About: /about
+  # Footer
+  footer_about: "© 2019 Dazzy Ding."
+  # About Widget
+  about_widget_avatar_url: /assets/img/avatar.png
+  about_widget_text:
+  # Post
+  default_post_title: Untitled
+  default_post_icon: fa-file-text-o
+  # Archive Date Format
+  archive_date_format: YYYY-MM-DD
+  archive_font_awesome_icon_css: fa-folder-open
+
+  google_analytics: UA-77259235-1
   social_platforms:
     - url: https://github.com/yukixz
       fa_icon: fa-github
