@@ -3,11 +3,11 @@
   <title>Dazzy Ding</title>
   
   
-  <link href="https://blog.dazzyd.org/atom.xml" rel="self"/>
+  <link href="https://blog.0u0.moe/atom.xml" rel="self"/>
   
-  <link href="https://blog.dazzyd.org/"/>
+  <link href="https://blog.0u0.moe/"/>
   <updated>2019-05-12T15:04:47.239Z</updated>
-  <id>https://blog.dazzyd.org/</id>
+  <id>https://blog.0u0.moe/</id>
   
   <author>
     <name>Dazzy Ding</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Linux 通过 Samba+Avahi 搭建 Time Machine 服务</title>
-    <link href="https://blog.dazzyd.org/providing-time-machine-on-linux/"/>
-    <id>https://blog.dazzyd.org/providing-time-machine-on-linux/</id>
+    <link href="https://blog.0u0.moe/providing-time-machine-on-linux/"/>
+    <id>https://blog.0u0.moe/providing-time-machine-on-linux/</id>
     <published>2019-05-12T13:45:13.000Z</published>
     <updated>2019-05-12T15:04:47.239Z</updated>
     
@@ -35,20 +35,20 @@
     
     
     
-    <category term="Linux" scheme="https://blog.dazzyd.org/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.0u0.moe/tags/Linux/"/>
     
-    <category term="Time Machine" scheme="https://blog.dazzyd.org/tags/Time-Machine/"/>
+    <category term="Time Machine" scheme="https://blog.0u0.moe/tags/Time-Machine/"/>
     
-    <category term="Samba" scheme="https://blog.dazzyd.org/tags/Samba/"/>
+    <category term="Samba" scheme="https://blog.0u0.moe/tags/Samba/"/>
     
-    <category term="Avahi" scheme="https://blog.dazzyd.org/tags/Avahi/"/>
+    <category term="Avahi" scheme="https://blog.0u0.moe/tags/Avahi/"/>
     
   </entry>
   
   <entry>
     <title>V2Ray 路由配置与混淆配置</title>
-    <link href="https://blog.dazzyd.org/v2ray-routing-obfuscation/"/>
-    <id>https://blog.dazzyd.org/v2ray-routing-obfuscation/</id>
+    <link href="https://blog.0u0.moe/v2ray-routing-obfuscation/"/>
+    <id>https://blog.0u0.moe/v2ray-routing-obfuscation/</id>
     <published>2019-05-08T03:50:05.000Z</published>
     <updated>2019-10-06T16:45:41.967Z</updated>
     
@@ -64,20 +64,20 @@
     
     
     
-    <category term="V2Ray" scheme="https://blog.dazzyd.org/tags/V2Ray/"/>
+    <category term="V2Ray" scheme="https://blog.0u0.moe/tags/V2Ray/"/>
     
-    <category term="TLS" scheme="https://blog.dazzyd.org/tags/TLS/"/>
+    <category term="TLS" scheme="https://blog.0u0.moe/tags/TLS/"/>
     
-    <category term="WebSocket" scheme="https://blog.dazzyd.org/tags/WebSocket/"/>
+    <category term="WebSocket" scheme="https://blog.0u0.moe/tags/WebSocket/"/>
     
-    <category term="Configuration" scheme="https://blog.dazzyd.org/tags/Configuration/"/>
+    <category term="Configuration" scheme="https://blog.0u0.moe/tags/Configuration/"/>
     
   </entry>
   
   <entry>
     <title>配置 WireGuard 接入家庭网络</title>
-    <link href="https://blog.dazzyd.org/setup-wireguard/"/>
-    <id>https://blog.dazzyd.org/setup-wireguard/</id>
+    <link href="https://blog.0u0.moe/setup-wireguard/"/>
+    <id>https://blog.0u0.moe/setup-wireguard/</id>
     <published>2019-04-11T02:18:10.000Z</published>
     <updated>2019-08-15T11:57:35.921Z</updated>
     
@@ -93,16 +93,16 @@
     
     
     
-    <category term="WireGuard" scheme="https://blog.dazzyd.org/tags/WireGuard/"/>
+    <category term="WireGuard" scheme="https://blog.0u0.moe/tags/WireGuard/"/>
     
-    <category term="VPN" scheme="https://blog.dazzyd.org/tags/VPN/"/>
+    <category term="VPN" scheme="https://blog.0u0.moe/tags/VPN/"/>
     
   </entry>
   
   <entry>
     <title>How to Draw a KanColle Map</title>
-    <link href="https://blog.dazzyd.org/how-to-draw-a-kancolle-map/"/>
-    <id>https://blog.dazzyd.org/how-to-draw-a-kancolle-map/</id>
+    <link href="https://blog.0u0.moe/how-to-draw-a-kancolle-map/"/>
+    <id>https://blog.0u0.moe/how-to-draw-a-kancolle-map/</id>
     <published>2016-12-13T16:00:00.000Z</published>
     <updated>2018-10-19T11:26:45.569Z</updated>
     
@@ -118,15 +118,15 @@
     
     
     
-    <category term="kancolle" scheme="https://blog.dazzyd.org/categories/kancolle/"/>
+    <category term="kancolle" scheme="https://blog.0u0.moe/categories/kancolle/"/>
     
     
   </entry>
   
   <entry>
     <title>「艦隊これくしょん」混淆与反混淆</title>
-    <link href="https://blog.dazzyd.org/kancolle-obfuscation/"/>
-    <id>https://blog.dazzyd.org/kancolle-obfuscation/</id>
+    <link href="https://blog.0u0.moe/kancolle-obfuscation/"/>
+    <id>https://blog.0u0.moe/kancolle-obfuscation/</id>
     <published>2016-03-16T16:00:00.000Z</published>
     <updated>2018-10-19T11:26:50.941Z</updated>
     
@@ -149,8 +149,8 @@
   
   <entry>
     <title>ocserv + Let&#39;s Encrypt + 证书认证</title>
-    <link href="https://blog.dazzyd.org/ocserv-letsencrypt-certificate/"/>
-    <id>https://blog.dazzyd.org/ocserv-letsencrypt-certificate/</id>
+    <link href="https://blog.0u0.moe/ocserv-letsencrypt-certificate/"/>
+    <id>https://blog.0u0.moe/ocserv-letsencrypt-certificate/</id>
     <published>2016-02-14T16:00:00.000Z</published>
     <updated>2019-10-06T16:45:44.826Z</updated>
     
