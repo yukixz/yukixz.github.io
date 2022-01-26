@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,9 @@
     <!--Description-->
     
         <meta name="description" content="起因Shadowsocks 是一个纯粹的代理服务，需要前置 PAC 才能实现请求路由的功能。然而支持 PAC 代理规则的应用程序是稀少的，实际使用中都有发现不少应用程序无法理解系统配置里的PAC规则，只能在应用程序里配置成所有请求都走代理服务。
-V2Ray 则提供了代理服务级别的请求路由功能。应用程">
+
+
+V2Ray 则提供了代理服务级别的请求路由功能。应">
     
 
     <!--Author-->
@@ -21,24 +23,24 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="V2Ray 路由配置与混淆配置">
+        <meta property="og:title" content="V2Ray 路由配置与混淆配置"/>
     
 
     <!--Open Graph Description-->
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Dazzy Ding">
+    <meta property="og:site_name" content="Dazzy Ding"/>
 
     <!--Type page-->
     
-        <meta property="og:type" content="article">
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary" />
     
 
     <!-- Title -->
@@ -59,7 +61,9 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
     <![endif]-->
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
 
     <!-- Google Analytics -->
     
@@ -76,6 +80,7 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
 
 
 
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="Dazzy Ding" type="application/atom+xml">
 </head>
 
 
@@ -88,24 +93,44 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
     
     <nav class="db dt-l w-100 mw8 center border-box pv3">
         <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Dazzy Ding">
-            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Dazzy Ding">
+            <img src="/assets/img/anodyne.svg" class="dib h3" alt="Dazzy Ding">
         </a>
         <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
                     Home
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
                     Archives
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
                     Tags
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about" title="About">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about" 
+                    title="About">
                     About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
                 </a>
             
         </div>
@@ -141,8 +166,13 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
                     
 
                     <!-- Main Post Content -->
-                    <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>Shadowsocks 是一个纯粹的代理服务，需要前置 PAC 才能实现请求路由的功能。然而支持 PAC 代理规则的应用程序是稀少的，实际使用中都有发现不少应用程序无法理解系统配置里的PAC规则，只能在应用程序里配置成所有请求都走代理服务。<br><img src="/v2ray-routing-obfuscation/ss+pac.svg" title="Shadowsocks with PAC"></p>
-<p>V2Ray 则提供了代理服务级别的请求路由功能。应用程序可以无脑地将所有请求都发送到本地代理，由本地代理对请求进行路由，选择直连或者发送到不同代理服务器。这种方式可以兼容所有支持配置HTTP/Socks代理的应用程序，优势很大（A 了上去）。<br><img src="/v2ray-routing-obfuscation/v2ray-routing.svg" title="V2Ray use routing"></p>
+                    <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>Shadowsocks 是一个纯粹的代理服务，需要前置 PAC 才能实现请求路由的功能。然而支持 PAC 代理规则的应用程序是稀少的，实际使用中都有发现不少应用程序无法理解系统配置里的PAC规则，只能在应用程序里配置成所有请求都走代理服务。</p>
+<img src="/v2ray-routing-obfuscation/ss+pac.svg" class="" title="Shadowsocks with PAC">
+
+<p>V2Ray 则提供了代理服务级别的请求路由功能。应用程序可以无脑地将所有请求都发送到本地代理，由本地代理对请求进行路由，选择直连或者发送到不同代理服务器。这种方式可以兼容所有支持配置HTTP/Socks代理的应用程序，优势很大（A 了上去）。</p>
+<img src="/v2ray-routing-obfuscation/v2ray-routing.svg" class="" title="V2Ray use routing">
+
+
 <h2 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h2><p>我习惯上只有国内流量走直连，其他流量全部走代理加速访问，所以采用以下请求路由规则：</p>
 <ol>
 <li>常见国内域名直接直连，提高路由选择效率。</li>
@@ -150,9 +180,12 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
 <li>进行DNS解析（IPOnDemand），如果是国内IP则直连。CDN在这里解析到国内节点。</li>
 <li>其它请求全部都走代理。</li>
 </ol>
-<img src="/v2ray-routing-obfuscation/routing-rules.svg">
-<p>在使用 Shadowsocks 的时候，我编写了 <a href="https://github.com/yukixz/whitepac" target="_blank" rel="noopener">whitepac</a> 自动生成满足上述路由规则的 PAC 文件。而 V2Ray 客户端里已经维护了一系列的域名和IP清单，因此路由规则可以简化许多。最终 <code>routing</code> 配置如下，需要 <a href="https://github.com/v2ray/domain-list-community" target="_blank" rel="noopener"><code>geosite.dat 3d506a8</code></a>。</p>
-<figure class="highlight json"><figcaption><span>V2Ray routing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"ROUTING"</span>,</span><br><span class="line">    <span class="attr">"domainStrategy"</span>: <span class="string">"IPOnDemand"</span>,</span><br><span class="line">    <span class="attr">"rules"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"field"</span>,</span><br><span class="line">            <span class="attr">"outboundTag"</span>: <span class="string">"DIRECT"</span>,</span><br><span class="line">            <span class="attr">"domain"</span>: [</span><br><span class="line">                <span class="string">"geosite:cn"</span>,</span><br><span class="line">                <span class="string">"geosite:apple"</span>,</span><br><span class="line">                <span class="string">"domain:steampowered.com"</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"field"</span>,</span><br><span class="line">            <span class="attr">"outboundTag"</span>: <span class="string">"PROXY"</span>,</span><br><span class="line">            <span class="attr">"domain"</span>: [</span><br><span class="line">                <span class="string">"geosite:geolocation-!cn"</span>,</span><br><span class="line">                <span class="string">"domain:tw"</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"field"</span>,</span><br><span class="line">            <span class="attr">"outboundTag"</span>: <span class="string">"DIRECT"</span>,</span><br><span class="line">            <span class="attr">"ip"</span>: [</span><br><span class="line">                <span class="string">"geoip:private"</span>,</span><br><span class="line">                <span class="string">"geoip:cn"</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"field"</span>,</span><br><span class="line">            <span class="attr">"outboundTag"</span>: <span class="string">"PROXY"</span>,</span><br><span class="line">            <span class="attr">"port"</span>: <span class="string">"0-65535"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/v2ray-routing-obfuscation/routing-rules.svg" class="">
+
+<p>在使用 Shadowsocks 的时候，我编写了 <a target="_blank" rel="noopener" href="https://github.com/yukixz/whitepac">whitepac</a> 自动生成满足上述路由规则的 PAC 文件。而 V2Ray 客户端里已经维护了一系列的域名和IP清单，因此路由规则可以简化许多。最终 <code>routing</code> 配置如下，需要 <a target="_blank" rel="noopener" href="https://github.com/v2ray/domain-list-community"><code>geosite.dat 3d506a8</code></a>。</p>
+<figure class="highlight json"><figcaption><span>V2Ray routing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;ROUTING&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;domainStrategy&quot;</span>: <span class="string">&quot;IPOnDemand&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;rules&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;DIRECT&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;domain&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;geosite:cn&quot;</span>,</span><br><span class="line">                <span class="string">&quot;geosite:apple&quot;</span>,</span><br><span class="line">                <span class="string">&quot;domain:steampowered.com&quot;</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;PROXY&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;domain&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;geosite:geolocation-!cn&quot;</span>,</span><br><span class="line">                <span class="string">&quot;domain:tw&quot;</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;DIRECT&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;ip&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;geoip:private&quot;</span>,</span><br><span class="line">                <span class="string">&quot;geoip:cn&quot;</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;PROXY&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;port&quot;</span>: <span class="string">&quot;0-65535&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="流量混淆（TLS-Websocket）"><a href="#流量混淆（TLS-Websocket）" class="headerlink" title="流量混淆（TLS+Websocket）"></a>流量混淆（TLS+Websocket）</h2><p>近期传言某工程上线了基于加密流量特征分析的代理探测方案，实际体验中单纯的加密代理确实会有不时的中断，无法稳定使用。解决方案有两种：一为不使用固定服务器和端口，随机切换从而减少单一服务的流量，减少探测的流量样本；二为伪装成正常协议流量，增加流量探测的难度，从而减少被探测出来的可能性。两种方案各有优劣，这里不做详细分析。</p>
 <p>由于 V2Ray 支持使用 TLS 和 WebSocket 作为 vmess 代理协议的传输层，我们使用 nginx 提供 <code>wss://v2ray</code> 实现 TLS，然后由 V2Ray 自行处理 <code>ws://v2ray</code>。细节如下：</p>
 <ol>
@@ -160,13 +193,23 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
 <li>同时，nginx 对外提供 <code>wss://v2ray</code>，并将 wss 解开 TLS 后转发到 v2ray-server。</li>
 <li>v2ray-server 接受 <code>ws://v2ray</code> 请求，通过 vmess 协议和 v2ray-client 交互实现代理服务。</li>
 <li>v2ray-client 配置为使用 TLS+WebSocket 传输层协议。</li>
-<li>v2ray-client 开启 <a href="https://www.v2ray.com/chapter_02/mux.html" target="_blank" rel="noopener">Mux 多路复用</a>，减少多层封包导致的 RTT 问题影响。</li>
+<li>v2ray-client 开启 <a target="_blank" rel="noopener" href="https://www.v2ray.com/chapter_02/mux.html">Mux 多路复用</a>，减少多层封包导致的 RTT 问题影响。</li>
 </ol>
-<p>流量如下图，一层一层封包：<br><img src="/v2ray-routing-obfuscation/v2ray-transmit.svg" title="V2Ray transmit"></p>
-<p>请求由 nginx 进行转发：<br><img src="/v2ray-routing-obfuscation/v2ray-server.svg" title="V2Ray server"></p>
-<h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><p>nginx 提供 WebSocket over TLS (wss)：<br><figure class="highlight plain"><figcaption><span>nginx server</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen            443 ssl http2 fastopen=4 reuseport;</span><br><span class="line">    listen       [::]:443 ssl http2 fastopen=4 reuseport;</span><br><span class="line">    server_name  yourdomain.org;</span><br><span class="line"></span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate     /etc/letsencrypt/live/yourdomain.org/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/yourdomain.org/privkey.pem;</span><br><span class="line"></span><br><span class="line">    location /v2ray &#123;</span><br><span class="line">        proxy_pass          http://127.0.0.1:10000;</span><br><span class="line">        proxy_redirect      off;</span><br><span class="line">        proxy_http_version  1.1;</span><br><span class="line">        proxy_set_header    Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_set_header    Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header    Host $host;</span><br><span class="line">        proxy_set_header    X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>v2ray-server 提供 VMess over WebSocket：<br><figure class="highlight json"><figcaption><span>v2ray-server inbounds</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"port"</span>: <span class="number">10000</span>,</span><br><span class="line">  <span class="attr">"listen"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">  <span class="attr">"protocol"</span>: <span class="string">"vmess"</span>,</span><br><span class="line">  <span class="attr">"settings"</span>: &#123;</span><br><span class="line">    <span class="attr">"clients"</span>: [</span><br><span class="line">      &#123;<span class="attr">"id"</span>: <span class="string">"88888888-4444-4444-4444-cccccccccccc"</span>, <span class="attr">"alterId"</span>: <span class="number">64</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"streamSettings"</span>: &#123;</span><br><span class="line">    <span class="attr">"network"</span>: <span class="string">"ws"</span>,</span><br><span class="line">    <span class="attr">"wsSettings"</span>: &#123;<span class="attr">"path"</span>: <span class="string">"/v2ray"</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>v2ray-client 使用 VMess over WebSocket over TLS 连接代理服务器，并开启 Mux 多路复用：<br><figure class="highlight json"><figcaption><span>v2ray-client outbounds</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"tag"</span>: <span class="string">"PROXY"</span>,</span><br><span class="line">  <span class="attr">"protocol"</span>: <span class="string">"vmess"</span>,</span><br><span class="line">  <span class="attr">"settings"</span>: &#123;</span><br><span class="line">    <span class="attr">"vnext"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"address"</span>: <span class="string">"yourdomain.org"</span>,</span><br><span class="line">        <span class="attr">"port"</span>: <span class="number">443</span>,</span><br><span class="line">        <span class="attr">"users"</span>: [&#123;</span><br><span class="line">          <span class="attr">"id"</span>: <span class="string">"88888888-4444-4444-4444-cccccccccccc"</span>,</span><br><span class="line">          <span class="attr">"alterId"</span>: <span class="number">64</span>,</span><br><span class="line">          <span class="attr">"security"</span>: <span class="string">"auto"</span>,</span><br><span class="line">          <span class="attr">"level"</span>: <span class="number">0</span></span><br><span class="line">        &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"streamSettings"</span>: &#123;</span><br><span class="line">    <span class="attr">"network"</span>: <span class="string">"ws"</span>,</span><br><span class="line">    <span class="attr">"security"</span>: <span class="string">"tls"</span>,</span><br><span class="line">    <span class="attr">"wsSettings"</span>: &#123;<span class="attr">"headers"</span>: &#123;&#125;, <span class="attr">"path"</span>: <span class="string">"/v2ray"</span>&#125;,</span><br><span class="line">    <span class="attr">"tlsSettings"</span>: &#123;</span><br><span class="line">      <span class="attr">"serverName"</span>: <span class="string">"yourdomain.org"</span>,</span><br><span class="line">      <span class="attr">"alpn"</span>: [<span class="string">"http/1.1"</span>],</span><br><span class="line">      <span class="attr">"allowInsecure"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">"allowInsecureCiphers"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"mux"</span>: &#123;<span class="attr">"enabled"</span>: <span class="literal">true</span>, <span class="attr">"concurrency"</span>: <span class="number">8</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>流量如下图，一层一层封包：</p>
+<img src="/v2ray-routing-obfuscation/v2ray-transmit.svg" class="" title="V2Ray transmit">
+
+<p>请求由 nginx 进行转发：</p>
+<img src="/v2ray-routing-obfuscation/v2ray-server.svg" class="" title="V2Ray server">
+
+
+<h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><p>nginx 提供 WebSocket over TLS (wss)：</p>
+<figure class="highlight plaintext"><figcaption><span>nginx server</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen            443 ssl http2 fastopen=4 reuseport;</span><br><span class="line">    listen       [::]:443 ssl http2 fastopen=4 reuseport;</span><br><span class="line">    server_name  yourdomain.org;</span><br><span class="line"></span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate     /etc/letsencrypt/live/yourdomain.org/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/yourdomain.org/privkey.pem;</span><br><span class="line"></span><br><span class="line">    location /v2ray &#123;</span><br><span class="line">        proxy_pass          http://127.0.0.1:10000;</span><br><span class="line">        proxy_redirect      off;</span><br><span class="line">        proxy_http_version  1.1;</span><br><span class="line">        proxy_set_header    Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_set_header    Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header    Host $host;</span><br><span class="line">        proxy_set_header    X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>v2ray-server 提供 VMess over WebSocket：</p>
+<figure class="highlight json"><figcaption><span>v2ray-server inbounds</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">  <span class="attr">&quot;listen&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">      &#123;<span class="attr">&quot;id&quot;</span>: <span class="string">&quot;88888888-4444-4444-4444-cccccccccccc&quot;</span>, <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;ws&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;wsSettings&quot;</span>: &#123;<span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/v2ray&quot;</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>v2ray-client 使用 VMess over WebSocket over TLS 连接代理服务器，并开启 Mux 多路复用：</p>
+<figure class="highlight json"><figcaption><span>v2ray-client outbounds</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;PROXY&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;vnext&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;address&quot;</span>: <span class="string">&quot;yourdomain.org&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;port&quot;</span>: <span class="number">443</span>,</span><br><span class="line">        <span class="attr">&quot;users&quot;</span>: [&#123;</span><br><span class="line">          <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;88888888-4444-4444-4444-cccccccccccc&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span>,</span><br><span class="line">          <span class="attr">&quot;security&quot;</span>: <span class="string">&quot;auto&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;level&quot;</span>: <span class="number">0</span></span><br><span class="line">        &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;ws&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;security&quot;</span>: <span class="string">&quot;tls&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;wsSettings&quot;</span>: &#123;<span class="attr">&quot;headers&quot;</span>: &#123;&#125;, <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/v2ray&quot;</span>&#125;,</span><br><span class="line">    <span class="attr">&quot;tlsSettings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;serverName&quot;</span>: <span class="string">&quot;yourdomain.org&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;alpn&quot;</span>: [<span class="string">&quot;http/1.1&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;allowInsecure&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">&quot;allowInsecureCiphers&quot;</span>: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;mux&quot;</span>: &#123;<span class="attr">&quot;enabled&quot;</span>: <span class="literal">true</span>, <span class="attr">&quot;concurrency&quot;</span>: <span class="number">8</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                     
                     <!-- Tags Bottom -->
@@ -184,7 +227,7 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
                 </div>
                 <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
                     
-                    <hr class="dn-l mw4 black-50 mt5">
+                    <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 1: About -->
                     <div class="mt5 mt0-l">
@@ -198,7 +241,7 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
     </article>
 </div>
 
-                    <hr class="dn-l mw4 black-50 mt5">
+                    <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 2: Categories -->
                     
@@ -276,6 +319,24 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
                         </a>
                     </div>
                 
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
             </div>
             <div class="f6 f5-ns center tc white pt5 fw3">
                 © 2019 Dazzy Ding.
@@ -285,15 +346,6 @@ V2Ray 则提供了代理服务级别的请求路由功能。应用程">
 
 <!-- After Footer -->
 <!-- Mermaid Diagrams -->
-
-<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
-<script>
-    (function(){
-    if (window.mermaid) {
-        mermaid.initialize({theme: 'forest'});
-    }
-    }());
-</script>
 
 
 <!-- Disqus Comments -->

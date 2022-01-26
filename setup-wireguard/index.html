@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,24 +21,24 @@ WireGuard 协议中所有节点均为对等节点 Peer，不">
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="配置 WireGuard 接入家庭网络">
+        <meta property="og:title" content="配置 WireGuard 接入家庭网络"/>
     
 
     <!--Open Graph Description-->
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Dazzy Ding">
+    <meta property="og:site_name" content="Dazzy Ding"/>
 
     <!--Type page-->
     
-        <meta property="og:type" content="article">
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary" />
     
 
     <!-- Title -->
@@ -59,7 +59,9 @@ WireGuard 协议中所有节点均为对等节点 Peer，不">
     <![endif]-->
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
 
     <!-- Google Analytics -->
     
@@ -76,6 +78,7 @@ WireGuard 协议中所有节点均为对等节点 Peer，不">
 
 
 
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="Dazzy Ding" type="application/atom+xml">
 </head>
 
 
@@ -88,24 +91,44 @@ WireGuard 协议中所有节点均为对等节点 Peer，不">
     
     <nav class="db dt-l w-100 mw8 center border-box pv3">
         <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Dazzy Ding">
-            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Dazzy Ding">
+            <img src="/assets/img/anodyne.svg" class="dib h3" alt="Dazzy Ding">
         </a>
         <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
                     Home
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
                     Archives
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
                     Tags
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about" title="About">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about" 
+                    title="About">
                     About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
                 </a>
             
         </div>
@@ -141,12 +164,12 @@ WireGuard 协议中所有节点均为对等节点 Peer，不">
                     
 
                     <!-- Main Post Content -->
-                    <p>在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 本来就是设计为实现这个需求的软件。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 <a href="https://www.wireguard.com/" target="_blank" rel="noopener">WireGuard</a> 作为 VPN 方案。</p>
+                    <p>在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 本来就是设计为实现这个需求的软件。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 <a target="_blank" rel="noopener" href="https://www.wireguard.com/">WireGuard</a> 作为 VPN 方案。</p>
 <p>WireGuard 协议中所有节点均为对等节点 Peer，不存在服务端和客户端的概念。但是我们可以人为划分节点角色，不同角色使用不同的配置也可以实现C/S模式。</p>
 <h2 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h2><p>家里已经有一个物理网络<code>10.42.0.0/24</code>，网关为路由器<code>10.42.0.1</code>，有几种可行方案：</p>
 <ol>
 <li>路由器<code>10.42.0.1</code>提供了 OpenVPN 服务端，但其版本未知，存在极大安全风险。</li>
-<li>单独搭建 VPN 服务端，配置 ARP 转发到路由器<code>10.42.0.1</code>，由路由器提供网关身份。<a href="https://jimmyxu.org/" target="_blank" rel="noopener">Jimmy Xu</a> 强烈不建议这么做，ARP 转发很麻烦。</li>
+<li>单独搭建 VPN 服务端，配置 ARP 转发到路由器<code>10.42.0.1</code>，由路由器提供网关身份。<a target="_blank" rel="noopener" href="https://jimmyxu.org/">Jimmy Xu</a> 强烈不建议这么做，ARP 转发很麻烦。</li>
 </ol>
 <p><del>最终采用以下方案：</del></p>
 <ul>
@@ -156,13 +179,13 @@ WireGuard 协议中所有节点均为对等节点 Peer，不">
 <li><del>VPN 服务端和路由器（物理网络网关）相互做静态路由。</del></li>
 </ul>
 <pre class="mermaid">graph LR
-client[WG Client<br>22.22.22.22<br>10.42.1.2] -. WireGuard .- server
+client[WG Client<br/>22.22.22.22<br/>10.42.1.2] -. WireGuard .- server
 client -- WG UDP --- router
 subgraph HOME:10.42.0.0/24
-router[Router<br>11.11.11.11<br>10.42.0.1]
-router -- WG UDP<br>Port Forward --- server[WG Server<br>10.42.0.2<br>10.42.1.1]
-router --- NAS[NAS<br>10.42.0.11]
-router --- Camera[Camera<br>10.42.0.12]
+router[Router<br/>11.11.11.11<br/>10.42.0.1]
+router -- WG UDP<br/>Port Forward --- server[WG Server<br/>10.42.0.2<br/>10.42.1.1]
+router --- NAS[NAS<br/>10.42.0.11]
+router --- Camera[Camera<br/>10.42.0.12]
 end</pre>
 
 <p><em>(Update 2019-05-15)</em> 由于购置了 OpenWRT 路由器，路由器<code>10.42.0.1</code>可以提供 WireGuard VPN 服务了，所以改用架构更为简洁的第一种方案。</p>
@@ -172,11 +195,11 @@ end</pre>
 <li>路由器同时作为两个网络 <code>10.42.0.0/24</code> 和  <code>10.42.1.0/24</code> 的网关。</li>
 </ul>
 <pre class="mermaid">graph LR
-client[WG Client<br>22.22.22.22<br>10.42.1.2] -. WireGuard .- router
+client[WG Client<br/>22.22.22.22<br/>10.42.1.2] -. WireGuard .- router
 subgraph HOME:10.42.0.0/24
-router[Router<br>11.11.11.11<br>10.42.0.1<br>10.42.1.1]
-router --- NAS[NAS<br>10.42.0.11]
-router --- Camera[Camera<br>10.42.0.12]
+router[Router<br/>11.11.11.11<br/>10.42.0.1<br/>10.42.1.1]
+router --- NAS[NAS<br/>10.42.0.11]
+router --- Camera[Camera<br/>10.42.0.12]
 end</pre>
 
 <table>
@@ -187,8 +210,7 @@ end</pre>
 <th>VPN Client</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>External IP</td>
 <td><code>11.11.11.11</code></td>
 <td><code>22.22.22.22</code></td>
@@ -203,19 +225,29 @@ end</pre>
 <td><code>12450</code></td>
 <td>-</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><ul>
 <li>Arch Linux: 5.0.7-1-ARCH</li>
 <li>WireGuard: 0.0.20190406</li>
 </ul>
-<h2 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h2><p>生成私钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wg genkey &gt; prikey</span><br><span class="line">$ chmod 600 prikey</span><br></pre></td></tr></table></figure></p>
-<p>生成公钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wg pubkey &lt; prikey &gt; pubkey</span><br></pre></td></tr></table></figure></p>
-<p>一行搞定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wg genkey | tee prikey | wg pubkey | tee pubkey</span><br><span class="line">## 输出为 pubkey</span><br></pre></td></tr></table></figure></p>
-<h2 id="WireGuard-配置"><a href="#WireGuard-配置" class="headerlink" title="WireGuard 配置"></a>WireGuard 配置</h2><p>服务端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Interface]</span><br><span class="line">Address = 10.42.1.1/24</span><br><span class="line">ListenPort = 12450</span><br><span class="line">PrivateKey = [ServerPriKey]</span><br><span class="line"></span><br><span class="line"># Required when iptables chain FORWARD&apos;s policy is not ACCEPT.</span><br><span class="line">#PostUp = iptables -A FORWARD -i %i -j ACCEPT</span><br><span class="line">#PostDown = iptables -D FORWARD -i %i -j ACCEPT</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">AllowedIPs = 10.42.1.2/24</span><br><span class="line">PublicKey = [ClientPubKey]</span><br><span class="line">PersistentKeepalive = 30</span><br></pre></td></tr></table></figure></p>
-<p>客户端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Interface]</span><br><span class="line">Address = 10.42.1.2/24                      # 客户端虚拟地址</span><br><span class="line">PrivateKey = [ClientPriKey]</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">PublicKey = [ServerPubKey]</span><br><span class="line">AllowedIPs = 10.42.0.0/24, 10.42.1.0/24     # 只有内部网络走VPN</span><br><span class="line">Endpoint = 11.11.11.11:12450</span><br><span class="line">PersistentKeepalive = 30</span><br></pre></td></tr></table></figure></p>
+<h2 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h2><p>生成私钥</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wg genkey &gt; prikey</span><br><span class="line">$ chmod 600 prikey</span><br></pre></td></tr></table></figure>
+
+<p>生成公钥</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wg pubkey &lt; prikey &gt; pubkey</span><br></pre></td></tr></table></figure>
+
+<p>一行搞定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wg genkey | tee prikey | wg pubkey | tee pubkey</span><br><span class="line">## 输出为 pubkey</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="WireGuard-配置"><a href="#WireGuard-配置" class="headerlink" title="WireGuard 配置"></a>WireGuard 配置</h2><p>服务端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Interface]</span><br><span class="line">Address = 10.42.1.1/24</span><br><span class="line">ListenPort = 12450</span><br><span class="line">PrivateKey = [ServerPriKey]</span><br><span class="line"></span><br><span class="line"># Required when iptables chain FORWARD&#x27;s policy is not ACCEPT.</span><br><span class="line">#PostUp = iptables -A FORWARD -i %i -j ACCEPT</span><br><span class="line">#PostDown = iptables -D FORWARD -i %i -j ACCEPT</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">AllowedIPs = 10.42.1.2/24</span><br><span class="line">PublicKey = [ClientPubKey]</span><br><span class="line">PersistentKeepalive = 30</span><br></pre></td></tr></table></figure>
+
+<p>客户端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Interface]</span><br><span class="line">Address = 10.42.1.2/24                      # 客户端虚拟地址</span><br><span class="line">PrivateKey = [ClientPriKey]</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">PublicKey = [ServerPubKey]</span><br><span class="line">AllowedIPs = 10.42.0.0/24, 10.42.1.0/24     # 只有内部网络走VPN</span><br><span class="line">Endpoint = 11.11.11.11:12450</span><br><span class="line">PersistentKeepalive = 30</span><br></pre></td></tr></table></figure>
+
 <h2 id="网关配置"><a href="#网关配置" class="headerlink" title="网关配置"></a><del>网关配置</del></h2><p><del>物理网关需要配置静态路由到 VPN网关；VPN 服务端为物理网络成员，无需配置路由。</del></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ip route add 10.42.1.0/24 via 10.42.0.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ip route add 10.42.1.0/24 via 10.42.0.2</span><br></pre></td></tr></table></figure>
                     
                     <!-- Tags Bottom -->
                     
@@ -232,7 +264,7 @@ end</pre>
                 </div>
                 <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
                     
-                    <hr class="dn-l mw4 black-50 mt5">
+                    <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 1: About -->
                     <div class="mt5 mt0-l">
@@ -246,7 +278,7 @@ end</pre>
     </article>
 </div>
 
-                    <hr class="dn-l mw4 black-50 mt5">
+                    <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 2: Categories -->
                     
@@ -324,6 +356,24 @@ end</pre>
                         </a>
                     </div>
                 
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
             </div>
             <div class="f6 f5-ns center tc white pt5 fw3">
                 © 2019 Dazzy Ding.
@@ -333,15 +383,6 @@ end</pre>
 
 <!-- After Footer -->
 <!-- Mermaid Diagrams -->
-
-<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
-<script>
-    (function(){
-    if (window.mermaid) {
-        mermaid.initialize({theme: 'forest'});
-    }
-    }());
-</script>
 
 
 <!-- Disqus Comments -->

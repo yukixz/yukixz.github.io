@@ -3,7 +3,7 @@
   <title>Dazzy Ding</title>
   
   
-  <link href="/atom.xml" rel="self"/>
+  <link href="https://blog.dazzyd.org/atom.xml" rel="self"/>
   
   <link href="https://blog.dazzyd.org/"/>
   <updated>2019-05-12T15:04:47.239Z</updated>
@@ -14,7 +14,7 @@
     
   </author>
   
-  <generator uri="http://hexo.io/">Hexo</generator>
+  <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>Linux 通过 Samba+Avahi 搭建 Time Machine 服务</title>
@@ -23,26 +23,25 @@
     <published>2019-05-12T13:45:13.000Z</published>
     <updated>2019-05-12T15:04:47.239Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/Time_Machine&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Time Machine&lt;/a&gt; 是 macOS
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/Time_Machine&quot;&gt;Time Machine&lt;/a&gt; 是 macOS</summary>
         
       
     
-    </summary>
     
     
-      <category term="Linux" scheme="https://blog.dazzyd.org/tags/Linux/"/>
     
-      <category term="Time Machine" scheme="https://blog.dazzyd.org/tags/Time-Machine/"/>
+    <category term="Linux" scheme="https://blog.dazzyd.org/tags/Linux/"/>
     
-      <category term="Samba" scheme="https://blog.dazzyd.org/tags/Samba/"/>
+    <category term="Time Machine" scheme="https://blog.dazzyd.org/tags/Time-Machine/"/>
     
-      <category term="Avahi" scheme="https://blog.dazzyd.org/tags/Avahi/"/>
+    <category term="Samba" scheme="https://blog.dazzyd.org/tags/Samba/"/>
+    
+    <category term="Avahi" scheme="https://blog.dazzyd.org/tags/Avahi/"/>
     
   </entry>
   
@@ -53,26 +52,25 @@
     <published>2019-05-08T03:50:05.000Z</published>
     <updated>2019-10-06T16:45:41.967Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;Shadowsocks 是一个纯粹的代理服务，需要前置 PAC 才能实现请求路由的功能。然而支持 PAC
+    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;Shadowsocks 是一个纯粹的代理服务，需要前置 PAC 才能实现请求路由的功能。然而支持 PAC</summary>
         
       
     
-    </summary>
     
     
-      <category term="V2Ray" scheme="https://blog.dazzyd.org/tags/V2Ray/"/>
     
-      <category term="TLS" scheme="https://blog.dazzyd.org/tags/TLS/"/>
+    <category term="V2Ray" scheme="https://blog.dazzyd.org/tags/V2Ray/"/>
     
-      <category term="WebSocket" scheme="https://blog.dazzyd.org/tags/WebSocket/"/>
+    <category term="TLS" scheme="https://blog.dazzyd.org/tags/TLS/"/>
     
-      <category term="Configuration" scheme="https://blog.dazzyd.org/tags/Configuration/"/>
+    <category term="WebSocket" scheme="https://blog.dazzyd.org/tags/WebSocket/"/>
+    
+    <category term="Configuration" scheme="https://blog.dazzyd.org/tags/Configuration/"/>
     
   </entry>
   
@@ -83,22 +81,21 @@
     <published>2019-04-11T02:18:10.000Z</published>
     <updated>2019-08-15T11:57:35.921Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 本来就是设计为实现这个需求的软件。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 &lt;a href=&quot;https://www.wireguard.com/&quot;
+    <summary type="html">&lt;p&gt;在家里搭建了NAS、PT等服务后，在外面访问家里的资源成为一个迫在眉睫的需求，而 VPN 本来就是设计为实现这个需求的软件。经过痛苦的数小时 Cisco IPSec 配置并且部署失败后，最终选择了 &lt;a</summary>
         
       
     
-    </summary>
     
     
-      <category term="WireGuard" scheme="https://blog.dazzyd.org/tags/WireGuard/"/>
     
-      <category term="VPN" scheme="https://blog.dazzyd.org/tags/VPN/"/>
+    <category term="WireGuard" scheme="https://blog.dazzyd.org/tags/WireGuard/"/>
+    
+    <category term="VPN" scheme="https://blog.dazzyd.org/tags/VPN/"/>
     
   </entry>
   
@@ -109,19 +106,19 @@
     <published>2016-12-13T16:00:00.000Z</published>
     <updated>2018-10-19T11:26:45.569Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;This is a post about how &lt;a href=&quot;https://github.com/yukixz/kcmap&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;kcmap&lt;/a&gt; draw a SVG using map SWF
+    <summary type="html">&lt;p&gt;This is a post about how &lt;a href=&quot;https://github.com/yukixz/kcmap&quot;&gt;kcmap&lt;/a&gt; draw a SVG using map SWF only.&lt;/p&gt;
+&lt;img</summary>
         
       
     
-    </summary>
     
-      <category term="kancolle" scheme="https://blog.dazzyd.org/categories/kancolle/"/>
+    
+    <category term="kancolle" scheme="https://blog.dazzyd.org/categories/kancolle/"/>
     
     
   </entry>
@@ -133,20 +130,19 @@
     <published>2016-03-16T16:00:00.000Z</published>
     <updated>2018-10-19T11:26:50.941Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;「艦隊これくしょん」出于反 Bot 和未知目的，对游戏资源进行了不少混淆处理。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;「艦隊これくしょん」出于反 Bot 和未知目的，对游戏资源进行了不少混淆处理。&lt;/p&gt;
 &lt;p&gt;本文列举将会列举部分资源的混淆算法，并给出整理后的混淆算法或反混淆算法。&lt;/p&gt;
 &lt;p&gt;注意：此些算法都具有时效性，建议在使用前进行测试。&lt;/p&gt;
-&lt;h2 id=&quot;体例&quot;&gt;&lt;a
+&lt;h2 id=&quot;体例&quot;&gt;&lt;a</summary>
         
       
     
-    </summary>
+    
     
     
   </entry>
@@ -158,18 +154,17 @@
     <published>2016-02-14T16:00:00.000Z</published>
     <updated>2019-10-06T16:45:44.826Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;本文需要基础 Linux 知识与网络知识。&lt;br&gt;请自行替换文内的所有全大写字段。  &lt;/p&gt;
-&lt;h2 id=&quot;简要原理&quot;&gt;&lt;a href=&quot;#简要原理&quot; class=&quot;headerlink&quot;
+    <summary type="html">&lt;p&gt;本文需要基础 Linux 知识与网络知识。&lt;br&gt;请自行替换文内的所有全大写字段。  &lt;/p&gt;
+&lt;h2 id=&quot;简要原理&quot;&gt;&lt;a href=&quot;#简要原理&quot; class=&quot;headerlink&quot;</summary>
         
       
     
-    </summary>
+    
     
     
   </entry>

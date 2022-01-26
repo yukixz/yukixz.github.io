@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,24 +22,24 @@ FriendsWWY’S BLOG (wwyqianqian)">
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="About">
+        <meta property="og:title" content="About"/>
     
 
     <!--Open Graph Description-->
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Dazzy Ding">
+    <meta property="og:site_name" content="Dazzy Ding"/>
 
     <!--Type page-->
     
-        <meta property="og:type" content="article">
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary" />
     
 
     <!-- Title -->
@@ -60,7 +60,9 @@ FriendsWWY’S BLOG (wwyqianqian)">
     <![endif]-->
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
 
     <!-- Google Analytics -->
     
@@ -77,6 +79,7 @@ FriendsWWY’S BLOG (wwyqianqian)">
 
 
 
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="Dazzy Ding" type="application/atom+xml">
 </head>
 
 
@@ -92,24 +95,44 @@ FriendsWWY’S BLOG (wwyqianqian)">
     
     <nav class="db dt-l w-100 mw8 center border-box pv3">
         <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Dazzy Ding">
-            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Dazzy Ding">
+            <img src="/assets/img/anodyne.svg" class="dib h3" alt="Dazzy Ding">
         </a>
         <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
                     Home
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
                     Archives
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
                     Tags
                 </a>
             
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about" title="About">
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about" 
+                    title="About">
                     About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
                 </a>
             
         </div>
@@ -138,8 +161,8 @@ FriendsWWY’S BLOG (wwyqianqian)">
                     <div class="w-100 mw7 fw3 lh-copy post-content">
                         <!-- Main Post Content -->
                         <h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>This is Dazzy Ding, aka yukixz, ks.magi.</p>
-<p>I’ll finish writing this up <a href="http://www.scp-wiki.net/scp-j" target="_blank" rel="noopener">later</a>.</p>
-<h2 id="Friends"><a href="#Friends" class="headerlink" title="Friends"></a>Friends</h2><p><a href="https://wwyqianqian.github.io/" target="_blank" rel="noopener">WWY’S BLOG (wwyqianqian)</a></p>
+<p>I’ll finish writing this up <a target="_blank" rel="noopener" href="http://www.scp-wiki.net/scp-j">later</a>.</p>
+<h2 id="Friends"><a href="#Friends" class="headerlink" title="Friends"></a>Friends</h2><p><a target="_blank" rel="noopener" href="https://wwyqianqian.github.io/">WWY’S BLOG (wwyqianqian)</a></p>
 
                     </div>
                 
@@ -189,6 +212,24 @@ FriendsWWY’S BLOG (wwyqianqian)">
                         </a>
                     </div>
                 
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
             </div>
             <div class="f6 f5-ns center tc white pt5 fw3">
                 © 2019 Dazzy Ding.
@@ -198,15 +239,6 @@ FriendsWWY’S BLOG (wwyqianqian)">
 
 <!-- After Footer -->
 <!-- Mermaid Diagrams -->
-
-<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
-<script>
-    (function(){
-    if (window.mermaid) {
-        mermaid.initialize({theme: 'forest'});
-    }
-    }());
-</script>
 
 
 <!-- Disqus Comments -->
