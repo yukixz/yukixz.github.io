@@ -122,6 +122,11 @@ theme_config:
     - url: /atom.xml
       fa_icon: fa-rss
 
+  # Extension: mermaid
+  mermaid:
+    enable: true
+    version: "8.13.10"
+
 # Extension: feed
 feed:
   type: atom
@@ -132,7 +137,3 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
-
-# Extension: mermaid
-mermaid:
-  version: "7.1.2"
