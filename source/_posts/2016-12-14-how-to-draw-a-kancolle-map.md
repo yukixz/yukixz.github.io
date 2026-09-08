@@ -1,5 +1,6 @@
 ---
 title: How to Draw a KanColle Map
+lang: en
 categories: kancolle
 alias: /blog/2016/12/14/how-to-draw-a-kancolle-map/
 ---

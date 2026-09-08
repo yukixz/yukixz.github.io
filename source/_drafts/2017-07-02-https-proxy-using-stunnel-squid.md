@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "HTTPS Proxy Using Stunnel & Squid"
+lang: en
 date: 2017-07-20 20:00:00 +0800
 comments: true
 categories: 
@@ -30,4 +31,3 @@ Squid is used to provide HTTP proxy for accessing web.
 # Squid
 
 Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more.
-

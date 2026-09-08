@@ -9,7 +9,7 @@ description:
 keywords:
 author: Dazzy Ding
 language:
-  - zh
+  - zh-CN
   - en
 timezone: Asia/Hong_Kong
 
@@ -96,7 +96,7 @@ theme_config:
     Tags: /tags
     About: /about
   # Footer
-  footer_about: "© 2019 Dazzy Ding."
+  footer_about: "© {year} Dazzy Ding."
   # About Widget
   about_widget_avatar_url: /assets/img/avatar.png
   about_widget_text:

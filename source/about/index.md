@@ -1,5 +1,6 @@
 ---
 title: About
+lang: en
 date: 1984-02-14 00:00:00
 ---
 
