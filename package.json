@@ -21,9 +21,15 @@
     "hexo-generator-index": "^4.0.0",
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-markdown-it": "^7.1.1",
     "hexo-renderer-stylus": "^3.0.1",
-    "hexo-server": "^3.0.0"
+    "hexo-server": "^3.0.0",
+    "hexo-util": "^4.0.0",
+    "markdown-it": "^15.0.1"
+  },
+  "overrides": {
+    "hexo-renderer-stylus": {
+      "stylus": "^0.64.0"
+    }
   },
   "engines": {
     "node": "24.x"

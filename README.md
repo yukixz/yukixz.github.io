@@ -18,6 +18,14 @@ are installed from `package-lock.json`. Commands use the site timezone
 (`Asia/Hong_Kong`) so date parsing is consistent between local and CI builds. Tests build an isolated fixture site to
 check archive ranges, ordering, pagination, hidden content, and metadata.
 
+Markdown is rendered directly with `markdown-it` in `scripts/markdown.js`.
+The adapter preserves heading IDs, hard line breaks, raw HTML, and automatic
+links without depending on the legacy Hexo renderer's private parser APIs.
+Tests also cover Markdown output and Mermaid code blocks. Mermaid and Tachyons
+CDN versions are pinned in the site configuration and theme respectively.
+The Stylus override keeps the compiler current until `hexo-renderer-stylus`
+updates its dependency range; remove it when the plugin supports Stylus 0.64+.
+
 ## Publishing
 
 Push source changes to the `source` branch. GitHub Actions runs tests, builds the

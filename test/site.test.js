@@ -36,7 +36,17 @@ test('generated pages respect visibility, archive ranges, pagination and metadat
       fs.writeFileSync(path.join(base, `source/_posts/${slug}.md`),
         `---\ntitle: ${slug}\ndate: ${date}\nhidden: ${hidden}\ntags: [${term}]\ncategories: [${term}]\n` +
         (slug === 'new' ? 'description: \'A "quoted" & useful description\'\nshare_cover: /cover.png\n' : '') +
-        '---\nArticle content.');
+        '---\nArticle content.\n\n' +
+        (slug === 'new' ? [
+          '## Stable Heading', '## Stable Heading', '## 中文标题',
+          'First line\nSecond line',
+          'Visit example.com or https://example.org.',
+          '![An image](/cover.png)',
+          '<span class="raw-html">Raw HTML</span>',
+          '| Name | Value |\n| --- | --- |\n| Test | 1 |',
+          '```js\nconst answer = 42;\n```',
+          '```mermaid\ngraph LR\nA[Start] --> B[End]\n```'
+        ].join('\n\n') : ''));
     }
     await hexo.init();
     hexo.config.index_generator.per_page = 2;
@@ -82,6 +92,17 @@ test('generated pages respect visibility, archive ranges, pagination and metadat
       assert.match(read(file), /property="og:type" content="website"/);
     }
     const article = read('new/index.html');
+    assert.match(article, /<h2 id="Stable-Heading">Stable Heading<\/h2>/);
+    assert.match(article, /<h2 id="Stable-Heading-2">Stable Heading<\/h2>/);
+    assert.match(article, /<h2 id="中文标题">中文标题<\/h2>/);
+    assert.match(article, /First line<br>\nSecond line/);
+    assert.match(article, /href="http:\/\/example.com"/);
+    assert.match(article, /href="https:\/\/example.org"/);
+    assert.match(article, /<img src="\/cover.png" alt="An image">/);
+    assert.match(article, /<span class="raw-html">Raw HTML<\/span>/);
+    assert.match(article, /<table>/);
+    assert.match(article, /answer/);
+    assert.match(article, /<pre class="mermaid">graph LR\nA\[Start\] --> B\[End\]<\/pre>/);
     assert.match(article, /property="og:type" content="article"/);
     assert.match(article, /name="description" content="A &#34;quoted&#34; &amp; useful description"/);
     assert.match(article, /property="og:image" content="https:\/\/blog\.0u0\.moe\/cover.png"/);
