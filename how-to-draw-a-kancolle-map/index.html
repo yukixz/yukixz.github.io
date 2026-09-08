@@ -12,10 +12,9 @@
     
         <meta name="description" content="This is a post about how kcmap draw a SVG using map SWF only.
 
-
-
-Basic KnowledgeIn order to understand this post, you may need these knowledge.
-Displa">
+Basic Knowledge
+In order to understand this post, you may need these knowledge.
+Display">
     
 
     <!--Author-->
@@ -82,7 +81,7 @@ Displa">
 
 
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Dazzy Ding" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dazzy Ding" type="application/atom+xml">
 </head>
 
 
@@ -152,33 +151,45 @@ Displa">
                     <!-- Main Post Content -->
                     <p>This is a post about how <a target="_blank" rel="noopener" href="https://github.com/yukixz/kcmap">kcmap</a> draw a SVG using map SWF only.</p>
 <img src="/how-to-draw-a-kancolle-map/kcmap_23_final.svg" class="" title="kcmap 2-3 final">
-
-
-<h2 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h2><p>In order to understand this post, you may need these knowledge.</p>
-<h3 id="Display-Container-of-Flash-AS3"><a href="#Display-Container-of-Flash-AS3" class="headerlink" title="Display Container of Flash (AS3)"></a>Display Container of Flash (AS3)</h3><p>Flash (AS3) renders its display from a <code>DisplayObjectContainer</code> tree.<br>A container is isolated system, having self-governed coordinate system, child containers and so on.</p>
+<h2 id="Basic-Knowledge">Basic Knowledge</h2>
+<p>In order to understand this post, you may need these knowledge.</p>
+<h3 id="Display-Container-of-Flash-AS3">Display Container of Flash (AS3)</h3>
+<p>Flash (AS3) renders its display from a <code>DisplayObjectContainer</code> tree.<br>
+A container is isolated system, having self-governed coordinate system, child containers and so on.</p>
 <p>These are common container: <code>MovieClip</code>, <code>Sprite</code>, <code>Shape</code>, etc.</p>
-<h3 id="Coordinate-System-of-Flash"><a href="#Coordinate-System-of-Flash" class="headerlink" title="Coordinate System of Flash"></a>Coordinate System of Flash</h3><p>Coordinate of flash allow interger only, while one point equals to 0.05 pixel.<br>It means <code>(8000, 6000)</code> is <code>(400, 300)</code> on screen.</p>
-<h3 id="Decompilation-of-SWF"><a href="#Decompilation-of-SWF" class="headerlink" title="Decompilation of SWF"></a>Decompilation of SWF</h3><p>Usage of <a target="_blank" rel="noopener" href="https://www.free-decompiler.com/">JPEXS Free Flash Decompiler (ffdec)</a>.</p>
-<h2 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h2><h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><p>According to the decompilation of map swf, a Sprite named <code>map</code> contains entire data inside the swf.</p>
-<p>When game client calls <code>/api_req_map/start</code> or <code>/api_req_map/next</code>, the <code>api_no</code> value in response is used to indicates the route.<br>For example, <code>api_no: 11</code> indicates child Sprite <code>line11</code> of Sprite <code>map</code>.<br>If Sprite <code>line11</code> isn’t a start spot, it will contain a Shape which contain the route Bitmap.</p>
+<h3 id="Coordinate-System-of-Flash">Coordinate System of Flash</h3>
+<p>Coordinate of flash allow interger only, while one point equals to 0.05 pixel.<br>
+It means <code>(8000, 6000)</code> is <code>(400, 300)</code> on screen.</p>
+<h3 id="Decompilation-of-SWF">Decompilation of SWF</h3>
+<p>Usage of <a target="_blank" rel="noopener" href="https://www.free-decompiler.com/">JPEXS Free Flash Decompiler (ffdec)</a>.</p>
+<h2 id="Container">Container</h2>
+<h3 id="Structure">Structure</h3>
+<p>According to the decompilation of map swf, a Sprite named <code>map</code> contains entire data inside the swf.</p>
+<p>When game client calls <code>/api_req_map/start</code> or <code>/api_req_map/next</code>, the <code>api_no</code> value in response is used to indicates the route.<br>
+For example, <code>api_no: 11</code> indicates child Sprite <code>line11</code> of Sprite <code>map</code>.<br>
+If Sprite <code>line11</code> isn’t a start spot, it will contain a Shape which contain the route Bitmap.</p>
 <p>The container structure is as follows.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sprite@name=map</span><br><span class="line">├─┬ child[@name=line11][@id=32] =&gt; Sprite@id=32</span><br><span class="line">│ └─┬ child@id=31 =&gt; Shape@id=31</span><br><span class="line">│   └─┬ shapeBounds</span><br><span class="line">│     └ child@id=30 =&gt; Bitmap@id=30</span><br><span class="line">├─┬ child[@name=line12][@id=34] =&gt; ...</span><br><span class="line">│ └── ...</span><br><span class="line">└ ...</span><br></pre></td></tr></table></figure>
-
-<h3 id="Coordinate"><a href="#Coordinate" class="headerlink" title="Coordinate"></a>Coordinate</h3><p>As said, each container has its owned coordinate system.<br>The real coordinate of current container is got by summing up <code>x</code> and <code>y</code> from root to current container.</p>
-<p>It’s easy.<br>Let’s mark line 11 of map 2-3 for an intuitive feeling.</p>
+<h3 id="Coordinate">Coordinate</h3>
+<p>As said, each container has its owned coordinate system.<br>
+The real coordinate of current container is got by summing up <code>x</code> and <code>y</code> from root to current container.</p>
+<p>It’s easy.<br>
+Let’s mark line 11 of map 2-3 for an intuitive feeling.</p>
 <ul>
 <li>The GREEN cross is the origin of Sprite <code>line11</code> in its parent Sprite <code>map</code>.</li>
 <li>The CYAN cross is the origin of Shape (line11) in its parent Sprite <code>line11</code>.</li>
 <li>The RED rectangle is bounds of Shape (line11) which consists of Bitmap (line11).</li>
 </ul>
 <img src="/how-to-draw-a-kancolle-map/kcmap_mc_23_11.png" class="" title="Map 2-3 line 11">
-
-
-<h2 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h2><img src="/how-to-draw-a-kancolle-map/kcmap_mc_23.png" class="" title="Map 2-3">
-
+<h2 id="Route">Route</h2>
+<img src="/how-to-draw-a-kancolle-map/kcmap_mc_23.png" class="" title="Map 2-3">
 <p>Take a look at all container marked map 2-3.</p>
-<p>It shows routes’ end position, routes’ image position, routes’ image size, …<br>Wait, where do routes start?<br>In fact, start position of routes don’t appear inside SWF.<br>Guessing is required to find out routes’ start position.</p>
-<h3 id="Guess"><a href="#Guess" class="headerlink" title="Guess"></a>Guess</h3><p>Here’s my method to guess start coordinate, using line 11 of map 2-3 as exmaple again.</p>
+<p>It shows routes’ end position, routes’ image position, routes’ image size, …<br>
+Wait, where do routes start?<br>
+In fact, start position of routes don’t appear inside SWF.<br>
+Guessing is required to find out routes’ start position.</p>
+<h3 id="Guess">Guess</h3>
+<p>Here’s my method to guess start coordinate, using line 11 of map 2-3 as exmaple again.</p>
 <ol>
 <li>Take all routes’ end coordinate as map spots.</li>
 <li>Calculate the coordinate of route image center(named C).</li>
@@ -189,14 +200,19 @@ Displa">
 <img src="/how-to-draw-a-kancolle-map/kcmap_23_11_guess_2.png" class="" title="Map 2-3 line 11 guess 2">
 <img src="/how-to-draw-a-kancolle-map/kcmap_23_11_guess_3.png" class="" title="Map 2-3 line 11 guess 3">
 <img src="/how-to-draw-a-kancolle-map/kcmap_23_11_guess_4.png" class="" title="Map 2-3 line 11 guess 4">
-
 <p>Then, we can draw the map image.</p>
 <img src="/how-to-draw-a-kancolle-map/kcmap_23.svg" class="" title="kcmap 2-3">
-
-
-<h2 id="Spot-Name"><a href="#Spot-Name" class="headerlink" title="Spot Name"></a>Spot Name</h2><h3 id="Old-Map"><a href="#Old-Map" class="headerlink" title="Old Map"></a>Old Map</h3><p>Spot is named as ABC letter by KanColle community to facilitate communication.<br>They’re not offical map information, so aren’t included in SWF.<br>Manual operation is required for assigning spot name.</p>
-<h3 id="New-Map"><a href="#New-Map" class="headerlink" title="New Map"></a>New Map</h3><p>Since a time I don’t know, KanColle production team begin to name spot as community did.<br>However, they embed the letters into the background, making it impossible to extract letters from SWF.<br>So, manual operation is also required.</p>
-<h2 id="Draw"><a href="#Draw" class="headerlink" title="Draw"></a>Draw</h2><p>After the steps above, information for drawing a map is complete.</p>
+<h2 id="Spot-Name">Spot Name</h2>
+<h3 id="Old-Map">Old Map</h3>
+<p>Spot is named as ABC letter by KanColle community to facilitate communication.<br>
+They’re not offical map information, so aren’t included in SWF.<br>
+Manual operation is required for assigning spot name.</p>
+<h3 id="New-Map">New Map</h3>
+<p>Since a time I don’t know, KanColle production team begin to name spot as community did.<br>
+However, they embed the letters into the background, making it impossible to extract letters from SWF.<br>
+So, manual operation is also required.</p>
+<h2 id="Draw">Draw</h2>
+<p>After the steps above, information for drawing a map is complete.</p>
 <p>Let’s take a look at the title image again.</p>
 <img src="/how-to-draw-a-kancolle-map/kcmap_23_final.svg" class="" title="kcmap 2-3 final">
 
@@ -318,10 +334,11 @@ Displa">
                 
             </div>
             <div class="f6 f5-ns center tc white pt5 fw3">
-                © 2019 Dazzy Ding.
+                © 2026 Dazzy Ding.
             </div>
         </div>
     </div>
+
 
 <!-- After Footer -->
 <!-- Mermaid Diagrams -->

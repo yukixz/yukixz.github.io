@@ -6,7 +6,7 @@
   <link href="https://blog.0u0.moe/atom.xml" rel="self"/>
   
   <link href="https://blog.0u0.moe/"/>
-  <updated>2019-05-12T15:04:47.239Z</updated>
+  <updated>2026-09-08T00:13:11.484Z</updated>
   <id>https://blog.0u0.moe/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.0u0.moe/providing-time-machine-on-linux/"/>
     <id>https://blog.0u0.moe/providing-time-machine-on-linux/</id>
     <published>2019-05-12T13:45:13.000Z</published>
-    <updated>2019-05-12T15:04:47.239Z</updated>
+    <updated>2026-09-08T00:13:11.484Z</updated>
     
     
       
@@ -50,14 +50,15 @@
     <link href="https://blog.0u0.moe/v2ray-routing-obfuscation/"/>
     <id>https://blog.0u0.moe/v2ray-routing-obfuscation/</id>
     <published>2019-05-08T03:50:05.000Z</published>
-    <updated>2019-10-06T16:45:41.967Z</updated>
+    <updated>2026-09-08T00:13:11.484Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;Shadowsocks 是一个纯粹的代理服务，需要前置 PAC 才能实现请求路由的功能。然而支持 PAC</summary>
+    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
+&lt;p&gt;Shadowsocks 是一个纯粹的代理服务，需要前置 PAC 才能实现请求路由的功能。然而支持 PAC</summary>
         
       
     
@@ -79,7 +80,7 @@
     <link href="https://blog.0u0.moe/setup-wireguard/"/>
     <id>https://blog.0u0.moe/setup-wireguard/</id>
     <published>2019-04-11T02:18:10.000Z</published>
-    <updated>2019-08-15T11:57:35.921Z</updated>
+    <updated>2026-09-08T00:13:11.484Z</updated>
     
     
       
@@ -104,7 +105,7 @@
     <link href="https://blog.0u0.moe/how-to-draw-a-kancolle-map/"/>
     <id>https://blog.0u0.moe/how-to-draw-a-kancolle-map/</id>
     <published>2016-12-13T16:00:00.000Z</published>
-    <updated>2018-10-19T11:26:45.569Z</updated>
+    <updated>2026-09-08T00:23:39.220Z</updated>
     
     
       
@@ -128,7 +129,7 @@
     <link href="https://blog.0u0.moe/kancolle-obfuscation/"/>
     <id>https://blog.0u0.moe/kancolle-obfuscation/</id>
     <published>2016-03-16T16:00:00.000Z</published>
-    <updated>2018-10-19T11:26:50.941Z</updated>
+    <updated>2026-09-08T00:13:11.482Z</updated>
     
     
       
@@ -138,7 +139,7 @@
     <summary type="html">&lt;p&gt;「艦隊これくしょん」出于反 Bot 和未知目的，对游戏资源进行了不少混淆处理。&lt;/p&gt;
 &lt;p&gt;本文列举将会列举部分资源的混淆算法，并给出整理后的混淆算法或反混淆算法。&lt;/p&gt;
 &lt;p&gt;注意：此些算法都具有时效性，建议在使用前进行测试。&lt;/p&gt;
-&lt;h2 id=&quot;体例&quot;&gt;&lt;a</summary>
+&lt;h2</summary>
         
       
     
@@ -152,15 +153,18 @@
     <link href="https://blog.0u0.moe/ocserv-letsencrypt-certificate/"/>
     <id>https://blog.0u0.moe/ocserv-letsencrypt-certificate/</id>
     <published>2016-02-14T16:00:00.000Z</published>
-    <updated>2019-10-06T16:45:44.826Z</updated>
+    <updated>2026-09-08T00:13:11.482Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;本文需要基础 Linux 知识与网络知识。&lt;br&gt;请自行替换文内的所有全大写字段。  &lt;/p&gt;
-&lt;h2 id=&quot;简要原理&quot;&gt;&lt;a href=&quot;#简要原理&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;p&gt;本文需要基础 Linux 知识与网络知识。&lt;br&gt;
+请自行替换文内的所有全大写字段。&lt;/p&gt;
+&lt;h2 id=&quot;简要原理&quot;&gt;简要原理&lt;/h2&gt;
+&lt;p&gt;以下包含口胡，欢迎指正。&lt;/p&gt;
+&lt;h3 id=&quot;TLS-SSL-证书认证&quot;&gt;TLS/SSL</summary>
         
       
     
