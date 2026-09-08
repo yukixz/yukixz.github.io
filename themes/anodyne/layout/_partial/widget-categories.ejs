@@ -1,6 +1,6 @@
 <div class="mt5 tc tl-l">
     <h3><%- __('categories') %></h3>
-    <% item.categories.forEach(function(category) { %>
+    <% public_terms(item.categories).forEach(function(category) { %>
         <p>
             <a href="<%- config.root + category.path %>"><%= category.name %></a>
         </p>

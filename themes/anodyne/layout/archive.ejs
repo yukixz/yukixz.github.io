@@ -5,25 +5,8 @@
         else title = __('archive_a');
     }
 
-    var postList = [];
-    if (page.category) {
-        site.categories.forEach(function(item) {
-            if(item.name === page.category) {
-                postList = item.posts.slice();
-            }
-        });
-        title = page.category;
-    }
-    else if (page.tag) {
-        site.tags.forEach(function(item) {
-            if(item.name === page.tag) {
-                postList = item.posts;
-            }
-        });
-        title = "# " + page.tag;
-    } else {
-        postList = site.posts;
-    }
+    if (page.category) title = page.category;
+    else if (page.tag) title = '#' + page.tag;
 %>
 
 <!-- Banner -->
@@ -36,9 +19,10 @@
 <div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
     <div class="content">
         <div class="mw8 center">
-            <% postList.each(function(item){ %>
-                <%- item.hidden ? '' : partial('_partial/article-archive', {item: item}) %>
+            <% page.posts.each(function(item){ %>
+                <%- partial('_partial/article-archive', {item: item}) %>
             <% }); %>
         </div>
     </div>
+    <%- partial('_partial/pagination') %>
 </div>

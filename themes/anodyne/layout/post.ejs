@@ -1,3 +1,4 @@
+<% var visibleTags = page.tags && page.tags.filter(tag => public_posts(tag.posts).length); %>
 <!-- Banner -->
 <%- partial('_partial/banner.ejs', {
     mainText: page.title || theme.default_post_title || __('default_post_title'),
@@ -12,9 +13,9 @@
             <div class="cf">
                 <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
                     <!-- Tags Vertical -->
-                    <% if (page.tags && page.tags.length) {
+                    <% if (visibleTags && visibleTags.length) {
                         var tags = [];
-                        page.tags.forEach(function(tag) {
+                        visibleTags.forEach(function(tag) {
                             tags.push('<a class="fw3 ph1 dib" href="' +  config.root + tag.path + '">#' + tag.name + '</a>');
                         });
                     %>
@@ -29,7 +30,7 @@
                     <%- page.content %>
                     
                     <!-- Tags Bottom -->
-                    <% if (page.tags && page.tags.length) { %>
+                    <% if (visibleTags && visibleTags.length) { %>
                         <div class="tags-container-bottom">
                             <i class="fa fa-tag pr3 text-main-color"></i><%- tags.join(' ') %>
                         </div>

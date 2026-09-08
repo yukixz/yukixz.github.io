@@ -4,58 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--Description-->
-    <% if (page.description){ %>
-        <meta name="description" content="<%= page.description %>">
-    <% } else if (config.description){ %>
-        <meta name="description" content="<%= config.description %>">
-    <% } else if (page.excerpt){ %>
-        <meta name="description" content="<%= strip_html(page.excerpt).replace(/^\s*/, '').replace(/\s*$/, '') %>">
-    <% } else if (page.content){ %>
-        <meta name="description" content="<%= strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150) %>">
-    <% } %>
-
-    <!--Author-->
-    <% if (config.author){ %>
-        <meta name="author" content="<%= config.author %>">
-    <% } %>
-
-    <!--Open Graph Title-->
-    <% if (page.title){ %>
-        <meta property="og:title" content="<%= page.title %>"/>
-    <% } else { %>
-        <meta property="og:title" content="<%= config.title %>"/>
-    <% } %>
-
-    <!--Open Graph Description-->
-    <% if (page.description){ %>
-        <meta property="og:description" content="<%= page.description %>" />
-    <% } else if (config.description) { %>
-        <meta property="og:description" content="<%= config.description %>" />
-    <% } %>
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="<%= config.title %>"/>
-
-    <!--Type page-->
-    <% if(page.title) { %>
-        <meta property="og:type" content="article" />
-    <% } else { %>
-        <meta property="og:type" content="website" />
-    <% } %>
-
-    <!--Page Cover-->
-    <% if (page.share_cover) { %>
-        <meta property="og:image" content="<%= config.url %><%= page.share_cover %>" />
-    <% } else if (config.cover) { %>
-        <meta property="og:image" content="<%= config.url %><%= config.cover %>"/>
-    <% } %>
-
-    <meta name="twitter:card" content="summary" />
-    <% if(theme.twitter_handle) { %>
-        <meta name="twitter:site" content="<%= theme.twitter_handle %>" />
-    <% } %>
-
     <!-- Title -->
     <%
         var title = [];
@@ -70,6 +18,37 @@
         title.push(config.title);
     %>
     <title><%= title.join(' - ') %></title>
+
+    <%
+        var description = strip_html(page.description || page.excerpt || page.content || config.description || '')
+            .replace(/\s+/g, ' ').trim().substring(0, 160);
+        var canonical = full_url_for(page.path.replace(/index\.html$/, ''));
+        var cover = page.share_cover || config.cover;
+    %>
+    <meta name="description" content="<%= description %>">
+    <meta name="author" content="<%= config.author %>">
+    <link rel="canonical" href="<%= canonical %>">
+    <% if (page.hidden) { %>
+        <meta name="robots" content="noindex, follow">
+    <% } %>
+    <meta property="og:title" content="<%= title.join(' - ') %>">
+    <meta property="og:description" content="<%= description %>">
+    <meta property="og:site_name" content="<%= config.title %>">
+    <meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
+    <meta property="og:url" content="<%= canonical %>">
+    <% if (is_post()) { %>
+        <meta property="article:published_time" content="<%= date_xml(page.date) %>">
+    <% } %>
+    <% if (cover) { %>
+        <meta property="og:image" content="<%= full_url_for(cover) %>">
+        <meta name="twitter:image" content="<%= full_url_for(cover) %>">
+    <% } %>
+    <meta name="twitter:card" content="<%= cover ? 'summary_large_image' : 'summary' %>">
+    <meta name="twitter:title" content="<%= title.join(' - ') %>">
+    <meta name="twitter:description" content="<%= description %>">
+    <% if (theme.twitter_handle) { %>
+        <meta name="twitter:site" content="<%= theme.twitter_handle %>">
+    <% } %>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css">

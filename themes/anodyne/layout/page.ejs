@@ -5,10 +5,10 @@
     var isTagIndex = page.type === 'tags' || page.type === 'tag';
     var isCategoryIndex = page.type === 'categories' || page.type === 'category';
     if (isTagIndex) {
-        items = site.tags;
+        items = public_terms(site.tags);
         title = __('tags');
     } else if (isCategoryIndex) {
-        items = site.categories;
+        items = public_terms(site.categories);
         title = __('categories');
     }
     var isTagOrCat = isTagIndex || isCategoryIndex;
