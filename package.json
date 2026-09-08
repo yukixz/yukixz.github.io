@@ -6,9 +6,9 @@
     "version": "6.3.0"
   },
   "scripts": {
-    "build": "hexo clean && hexo generate",
-    "test": "node --test test/*.test.js",
-    "server": "hexo server"
+    "build": "hexo clean && TZ=Asia/Hong_Kong hexo generate",
+    "test": "TZ=Asia/Hong_Kong node --test test/*.test.js",
+    "server": "TZ=Asia/Hong_Kong hexo server"
   },
   "dependencies": {
     "hexo": "^6.0.0",

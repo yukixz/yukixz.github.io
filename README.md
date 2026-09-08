@@ -14,7 +14,8 @@ npm run server
 ```
 
 `npm run build` removes stale output before generating `public/`. Dependencies
-are installed from `package-lock.json`. Tests build an isolated fixture site to
+are installed from `package-lock.json`. Commands use the site timezone
+(`Asia/Hong_Kong`) so date parsing is consistent between local and CI builds. Tests build an isolated fixture site to
 check archive ranges, ordering, pagination, hidden content, and metadata.
 
 ## Publishing
